@@ -4,7 +4,7 @@ from PIL import ImageGrab
 import time
 
 def get_pixel_color(x, y):
-    # Captura a cor do pixel nas coordenadas (x, y)
+    # Captura a cor do pixel nas coordenadas (x, y)a
     screen = ImageGrab.grab()
     return screen.getpixel((x, y))
 

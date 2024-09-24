@@ -1,7 +1,8 @@
 import pyautogui
 import time
 import keyboard
-from PIL import ImageGrab
+from PIL import ImageGrab, Image
+import numpy as np
 
 def click_ingame(coordenada, delay=0.05):
     coordenada2 = (coordenada[0]+1, coordenada[1])
@@ -90,20 +91,22 @@ def iniciar_shaiya(conta):
     esperar_cor_e_clicar((996, 875), (23, 24, 27), nome='Senha')
     pyautogui.write('Bolinho123321!')
 
+    # Entrar Posição do mouse: (991, 965), Cor do pixel: (68, 33, 33)
+    esperar_cor_e_clicar((991, 965), (68, 33, 33), nome='Entrar')
+
+    time.sleep(0.3)
+
     # Por favor espere um momento antes de iniciar novamente a sessão.
     # Posição do mouse: (1023, 509), Cor do pixel: (34, 34, 37)
-    time.sleep(0.2)
+
     if checar_cor((1023, 509), (34, 34, 37)):
         return False
 
     # A conexão com o servidor foi encerrada.
     # Posição do mouse: (1077, 504), Cor do pixel: (28, 24, 24)
-    time.sleep(0.2)
+
     if checar_cor((1077, 504), (28, 24, 24)):
         return False
-    
-    # Entrar Posição do mouse: (991, 965), Cor do pixel: (68, 33, 33)
-    esperar_cor_e_clicar((991, 965), (68, 33, 33), nome='Entrar')
 
     # Servidor Posição do mouse: (951, 658), Cor do pixel: (24, 24, 24)
     esperar_cor_e_clicar((951, 658), (24, 24, 24), nome='Servidor')
@@ -136,3 +139,40 @@ def iniciar_shaiya(conta):
     esperar_cor((939, 1061), (251, 239, 185), nome='')
 
     return True
+
+def comparar_img(img1, img2):
+    
+    # Verificar se as dimensões são diferentes
+    # if imagem1.size != imagem2.size:
+    #     return False
+    
+    # Converter as imagens para arrays NumPy para comparar pixel a pixel
+    img_array1 = np.array(img1)
+    img_array2 = np.array(img2)
+    
+    # Verificar se os arrays são idênticos
+    return np.array_equal(img_array1, img_array2)
+
+def printar_parte(cord1, cord2):
+    # Obter as coordenadas de referência
+    x1, y1 = cord1
+    x2, y2 = cord2
+    
+    # Definir a área de captura (top, left, width, height)
+    top = min(y1, y2)
+    left = min(x1, x2)
+    width = abs(x2 - x1)
+    height = abs(y2 - y1)
+    
+    # Capturar a área da tela
+    screenshot = pyautogui.screenshot(region=(left, top, width, height))
+
+    return screenshot
+
+erro_img = Image.open('./images/ERROR_10053.png')
+tela_img = printar_parte((854, 461), (895, 493))
+
+print(comparar_img(erro_img, tela_img))
+
+# Posição do mouse: (854, 461), Cor do pixel: (17, 16, 16)
+# Posição do mouse: (895, 493), Cor do pixel: (16, 16, 16)
