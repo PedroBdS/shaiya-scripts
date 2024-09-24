@@ -12,7 +12,6 @@ def click_ingame(coordenada, delay=0.05):
     pyautogui.moveTo(coordenada2)
     time.sleep(delay)
     pyautogui.mouseUp()
-    print(f'coordenada: {coordenada}\n coordenada2: {coordenada2}')
 
 def esperar_cor_e_clicar(coordenada, cor=False, delay=0, ingame=True, nome=False):
 
@@ -55,6 +54,12 @@ def esperar_cor(coordenada, cor, nome=False):
         if nome != False:
             print(f'esperando cor {nome}')
 
+def checar_cor(coordenada, cor):
+    if ImageGrab.grab().getpixel((coordenada)) == (cor):
+        return True
+    else:
+        return False
+
 def iniciar_shaiya(conta):
     time.sleep(0.2)
 
@@ -84,6 +89,12 @@ def iniciar_shaiya(conta):
     # Senha Posição do mouse: (996, 875), Cor do pixel: (23, 24, 27)
     esperar_cor_e_clicar((996, 875), (23, 24, 27), nome='Senha')
     pyautogui.write('Bolinho123321!')
+
+    # Por favor espere um momento antes de iniciar novamente a sessão.
+    # Posição do mouse: (1023, 509), Cor do pixel: (34, 34, 37)
+    time.sleep(0.2)
+    if checar_cor((1023, 509), (34, 34, 37)):
+        return False
 
     # Entrar Posição do mouse: (991, 965), Cor do pixel: (68, 33, 33)
     esperar_cor_e_clicar((991, 965), (68, 33, 33), nome='Entrar')
@@ -117,4 +128,5 @@ def iniciar_shaiya(conta):
 
     # Confirmar ingame Posição do mouse: (939, 1061), Cor do pixel: (251, 239, 185)
     esperar_cor((939, 1061), (251, 239, 185), nome='')
-    print('Login concluído com sucesso!')
+
+    return True
