@@ -96,6 +96,12 @@ def iniciar_shaiya(conta):
     if checar_cor((1023, 509), (34, 34, 37)):
         return False
 
+    # A conexão com o servidor foi encerrada.
+    # Posição do mouse: (1077, 504), Cor do pixel: (28, 24, 24)
+    time.sleep(0.2)
+    if checar_cor((1077, 504), (28, 24, 24)):
+        return False
+    
     # Entrar Posição do mouse: (991, 965), Cor do pixel: (68, 33, 33)
     esperar_cor_e_clicar((991, 965), (68, 33, 33), nome='Entrar')
 
