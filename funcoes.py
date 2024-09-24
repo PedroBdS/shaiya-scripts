@@ -169,10 +169,31 @@ def printar_parte(cord1, cord2):
 
     return screenshot
 
-erro_img = Image.open('./images/ERROR_10053.png')
-tela_img = printar_parte((854, 461), (895, 493))
+def identificar_erros():
+    tela_img = printar_parte((854, 461), (895, 493))
 
-print(comparar_img(erro_img, tela_img))
+def abir_leilao():
 
-# Posição do mouse: (854, 461), Cor do pixel: (17, 16, 16)
-# Posição do mouse: (895, 493), Cor do pixel: (16, 16, 16)
+    # Posição do mouse: (595, 246), Cor do pixel: (73, 73, 72)
+    # Posição do mouse: (597, 249), Cor do pixel: (35, 34, 36)
+    # Posição do mouse: (596, 253), Cor do pixel: (24, 24, 26)
+
+    # botao fechar Posição do mouse: (1324, 260), Cor do pixel: (86, 35, 37)
+
+    # Abrir leilão Posição do mouse: (1422, 1036), Cor do pixel: (249, 178, 102) 
+
+
+    if not(checar_cor((595, 246), (73, 73, 72)) and checar_cor((597, 249), (35, 34, 36))):
+        click_ingame((1422, 1036))
+
+    if not(checar_cor((595, 246), (73, 73, 72)) and checar_cor((597, 249), (35, 34, 36))):
+        print('Não foi possível abrir o leilão')
+        click_ingame((1422, 1036))
+
+    if not(checar_cor((595, 246), (73, 73, 72)) and checar_cor((597, 249), (35, 34, 36))):
+        click_ingame((1422, 1036))
+
+    if not(checar_cor((595, 246), (73, 73, 72)) and checar_cor((597, 249), (35, 34, 36))):
+        print('Não foi possível abrir o leilão')
+
+abir_leilao()

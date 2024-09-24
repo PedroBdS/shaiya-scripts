@@ -20,11 +20,21 @@ def capturar_tela(coordenada1, coordenada2, arquivo_saida='captura.png'):
     
     print(f"Imagem salva como {arquivo_saida}")
 
+'''
+Erros relatados:
+
 # A conexão com o servidor foi encerrada. ERROR 10053
 # Posição do mouse: (854, 461), Cor do pixel: (17, 16, 16)
 # Posição do mouse: (895, 493), Cor do pixel: (16, 16, 16)
 
-coordenada1 = (854, 461)  # Coordenada inicial (x1, y1)
-coordenada2 = (895, 493)  # Coordenada final (x2, y2)
 
-capturar_tela(coordenada1, coordenada2, 'ERROR_10053.png')
+'''
+# printar erros
+# capturar_tela((854, 461), (895, 493), 'ERROR_10053.png')
+
+'''
+Posição do mouse: (808, 378), Cor do pixel: (51, 50, 22)
+Posição do mouse: (1009, 387), Cor do pixel: (51, 50, 22)
+'''
+
+capturar_tela((808, 378), (1109, 387), './images/janela_do_nome.png')

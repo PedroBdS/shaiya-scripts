@@ -18,9 +18,9 @@ while True:
     
     # Se 'a' for pressionado, captura a posição do mouse e a cor do pixel
     if keyboard.is_pressed('a'):
-        # Obtém as coordenadas do mouse
+        # Obtém as coordenadas do mouseaaq
         x, y = pyautogui.position()
-        
+
         # Captura a cor do pixel na posição (x, y)
         color = get_pixel_color(x, y)
         
