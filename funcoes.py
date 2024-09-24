@@ -1,0 +1,120 @@
+import pyautogui
+import time
+import keyboard
+from PIL import ImageGrab
+
+def click_ingame(coordenada, delay=0.05):
+    coordenada2 = (coordenada[0]+1, coordenada[1])
+
+    pyautogui.moveTo(coordenada)
+    pyautogui.mouseDown()
+    time.sleep(delay)
+    pyautogui.moveTo(coordenada2)
+    time.sleep(delay)
+    pyautogui.mouseUp()
+    print(f'coordenada: {coordenada}\n coordenada2: {coordenada2}')
+
+def esperar_cor_e_clicar(coordenada, cor=False, delay=0, ingame=True, nome=False):
+
+    nome = False
+
+    pyautogui.moveTo(coordenada)
+    if not ingame:
+        while True:
+            if not cor:
+                time.sleep(delay)
+                pyautogui.click(coordenada)
+                break
+            if ImageGrab.grab().getpixel((coordenada)) == (cor):
+                time.sleep(delay)
+                pyautogui.click(coordenada, duration=delay)
+                break
+            if nome != False:
+                print(f'esperando cor {nome}')
+        return
+
+    if ingame:
+        while True:
+            if not cor:
+                time.sleep(delay)
+                click_ingame(coordenada)
+                break
+            if ImageGrab.grab().getpixel((coordenada)) == (cor):
+                time.sleep(delay)
+                click_ingame(coordenada, delay=delay)
+                break
+            if nome != False:
+                print(f'esperando cor {nome}')
+        return
+
+def esperar_cor(coordenada, cor, nome=False):
+    nome = False
+    while True:
+        if ImageGrab.grab().getpixel((coordenada)) == (cor):
+            break
+        if nome != False:
+            print(f'esperando cor {nome}')
+
+def iniciar_shaiya(conta):
+    time.sleep(0.2)
+
+    # Pressiona a tecla Windows
+    keyboard.press('windows')
+    keyboard.release('windows')
+
+    # Espera um pouco para o menu iniciar abrir
+    time.sleep(0.2)
+
+    # Digita "fawkes"
+    pyautogui.write('fawkes')
+
+    # Pressiona Enter
+    pyautogui.press('enter')
+
+    # PLAY Posição do mouse: (670, 552), Cor do pixel: (236, 56, 36)
+    esperar_cor_e_clicar((670, 552),(236, 56, 36), ingame=False, nome='PLAY')
+
+    # Connect Posição do mouse: (1841, 1021), Cor do pixel: (233, 69, 53)
+    esperar_cor_e_clicar((1841, 1021), (233, 69, 53), ingame=False, nome='Connect')
+
+    # Login Posição do mouse: (1006, 819), Cor do pixel: (22, 21, 22)
+    esperar_cor_e_clicar((1006, 819), (22, 21, 22), nome='Login')
+    pyautogui.write(conta)
+
+    # Senha Posição do mouse: (996, 875), Cor do pixel: (23, 24, 27)
+    esperar_cor_e_clicar((996, 875), (23, 24, 27), nome='Senha')
+    pyautogui.write('Bolinho123321!')
+
+    # Entrar Posição do mouse: (991, 965), Cor do pixel: (68, 33, 33)
+    esperar_cor_e_clicar((991, 965), (68, 33, 33), nome='Entrar')
+
+    # Servidor Posição do mouse: (951, 658), Cor do pixel: (24, 24, 24)
+    esperar_cor_e_clicar((951, 658), (24, 24, 24), nome='Servidor')
+                         
+    # OK Posição do mouse: (921, 971), Cor do pixel: (63, 32, 32)
+    esperar_cor_e_clicar((921, 971), (63, 32, 32), nome='OK')
+
+    # Esperar tela personagens Posição do mouse: (803, 455), Cor do pixel: (11, 8, 5)
+    esperar_cor((803, 455), (11, 8, 5), nome='Esperar tela personagens')
+
+    # P1 Posição do mouse: (468, 255), Cor do pixel: (27, 22, 15)
+    # esperar_cor_e_clicar((468, 255), nome='P1')
+
+    # P2 Posição do mouse: (468, 378), Cor do pixel: (30, 12, 41)
+    esperar_cor_e_clicar((468, 378), nome='P2')
+
+    # P3 Posição do mouse: (468, 508), Cor do pixel: (17, 19, 26)
+    # esperar_cor_e_clicar((468, 508), nome='P3')
+
+    # P4 Posição do mouse: (468, 634), Cor do pixel: (16, 23, 21)
+    # esperar_cor_e_clicar((468, 634), nome='P4')
+
+    # P5 Posição do mouse: (468, 768), Cor do pixel: (18, 21, 28)
+    # esperar_cor_e_clicar((468, 768), nome='P5')
+
+    # Início do jogo Posição do mouse: (1385, 1024), Cor do pixel: (250, 249, 247)
+    esperar_cor_e_clicar((1385, 1024), (250, 249, 247), nome='')
+
+    # Confirmar ingame Posição do mouse: (939, 1061), Cor do pixel: (251, 239, 185)
+    esperar_cor((939, 1061), (251, 239, 185), nome='')
+    print('Login concluído com sucesso!')
