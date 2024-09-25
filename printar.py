@@ -1,6 +1,23 @@
 import pyautogui
 from PIL import Image
 
+def print_unique_colors(image_path):
+    # Abre a imagem
+    image = Image.open(image_path)
+    
+    # Converte a imagem para RGB (caso não esteja nesse formato)
+    image = image.convert('RGB')
+    
+    # Obtém os pixels da imagem
+    pixels = image.getdata()
+    
+    # Usa um set para armazenar as cores únicas
+    unique_colors = set(pixels)
+    
+    # Printa cada cor única
+    for color in unique_colors:
+        print(color)
+
 def capturar_tela(coordenada1, coordenada2, arquivo_saida='captura.png'):
     # Obter as coordenadas de referência
     x1, y1 = coordenada1
@@ -30,11 +47,15 @@ Erros relatados:
 
 '''
 # printar erros
-# capturar_tela((854, 461), (895, 493), 'ERROR_10053.png')
+# capturar_tela((854, 461), (895, 493), 'A_conexão_com_o_servidor_foi_encerrada.png')
 
 '''
-Posição do mouse: (808, 378), Cor do pixel: (51, 50, 22)
-Posição do mouse: (1009, 387), Cor do pixel: (51, 50, 22)
+Posição do mouse: (1187, 397), Cor do pixel: (51, 50, 22)
+Posição do mouse: (1287, 407), Cor do pixel: (51, 50, 22)
 '''
 
-capturar_tela((808, 378), (1109, 387), './images/janela_do_nome.png')
+capturar_tela((1182, 397), (1287, 407), './images/janela_do_preco.png')
+
+
+
+

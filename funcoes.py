@@ -4,13 +4,15 @@ import keyboard
 from PIL import ImageGrab, Image
 import numpy as np
 
-def click_ingame(coordenada, delay=0.05):
+def click_ingame(coordenada, delay=0):
     coordenada2 = (coordenada[0]+1, coordenada[1])
 
     pyautogui.moveTo(coordenada)
     pyautogui.mouseDown()
     time.sleep(delay)
     pyautogui.moveTo(coordenada2)
+    time.sleep(delay)
+    pyautogui.moveTo(coordenada)
     time.sleep(delay)
     pyautogui.mouseUp()
 
@@ -172,7 +174,7 @@ def printar_parte(cord1, cord2):
 def identificar_erros():
     tela_img = printar_parte((854, 461), (895, 493))
 
-def abir_leilao():
+def abrir_leilao():
 
     # Posição do mouse: (595, 246), Cor do pixel: (73, 73, 72)
     # Posição do mouse: (597, 249), Cor do pixel: (35, 34, 36)
@@ -187,7 +189,6 @@ def abir_leilao():
         click_ingame((1422, 1036))
 
     if not(checar_cor((595, 246), (73, 73, 72)) and checar_cor((597, 249), (35, 34, 36))):
-        print('Não foi possível abrir o leilão')
         click_ingame((1422, 1036))
 
     if not(checar_cor((595, 246), (73, 73, 72)) and checar_cor((597, 249), (35, 34, 36))):
@@ -196,4 +197,56 @@ def abir_leilao():
     if not(checar_cor((595, 246), (73, 73, 72)) and checar_cor((597, 249), (35, 34, 36))):
         print('Não foi possível abrir o leilão')
 
-abir_leilao()
+def capturar_tela(coordenada1, coordenada2, arquivo_saida=False):
+    # Obter as coordenadas de referência
+    x1, y1 = coordenada1
+    x2, y2 = coordenada2
+    
+    # Definir a área de captura (top, left, width, height)
+    top = min(y1, y2)
+    left = min(x1, x2)
+    width = abs(x2 - x1)
+    height = abs(y2 - y1)
+    
+    # Capturar a área da tela
+    screenshot = pyautogui.screenshot(region=(left, top, width, height))
+    
+    if not arquivo_saida:
+        return screenshot
+    
+    # Salvar a captura de tela em PNG
+    screenshot.save(arquivo_saida)
+    
+
+    print(f"Imagem salva como {arquivo_saida}")
+
+
+def cor_do_nome():
+
+    # segundo item do leilão
+    esperar_cor_e_clicar((931, 444), ingame=True)
+
+    imagem = capturar_tela((809, 378), (810, 387))
+
+    cores_predefinidas = [
+    (255, 255, 255),
+    (255, 255, 0),
+    (255, 128, 0),
+    (255, 0, 255),
+    (128, 255, 255),
+    (128, 0, 255),
+    (0, 255, 64),
+    (0, 128, 255)
+    ]
+
+    pixels = list(imagem.getdata())
+    
+    for pixel in pixels:
+        if pixel in cores_predefinidas:
+            return pixel
+        
+    print(f'Falha ao identificar a cor do nome.')
+    return None
+
+def atualizar_leilao():
+    click_ingame((1250, 312))
