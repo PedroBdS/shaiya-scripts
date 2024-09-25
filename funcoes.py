@@ -16,17 +16,31 @@ matriz_mestre = [
     (0,1,1,1,0,0,1,0)
 ]
 
+cores_predefinidas = [
+    (255, 255, 255),
+    (255, 255, 0),
+    (255, 128, 0),
+    (255, 0, 255),
+    (128, 255, 255),
+    (128, 0, 255),
+    (0, 255, 64),
+    (0, 128, 255)
+    ]
+
 def click_ingame(coordenada, delay=0):
     coordenada2 = (coordenada[0]+1, coordenada[1])
 
     pyautogui.moveTo(coordenada)
     pyautogui.mouseDown()
-    time.sleep(delay)
+
     pyautogui.moveTo(coordenada)
-    time.sleep(delay)
+
     pyautogui.moveTo(coordenada)
-    time.sleep(delay)
+
     pyautogui.mouseUp()
+
+def matriz_para_tuplas(matriz):
+    return [tuple(int(valor) for valor in linha) for linha in matriz]
 
 def esperar_cor_e_clicar(coordenada, cor=False, delay=0, ingame=True, nome=False):
 
@@ -232,23 +246,7 @@ def capturar_tela(coordenada1, coordenada2, arquivo_saida=False):
 
     print(f"Imagem salva como {arquivo_saida}")
 
-def cor_do_nome():
-
-    # segundo item do leilão
-    esperar_cor_e_clicar((931, 444), ingame=True)
-
-    imagem = capturar_tela((809, 378), (810, 387))
-
-    cores_predefinidas = [
-    (255, 255, 255),
-    (255, 255, 0),
-    (255, 128, 0),
-    (255, 0, 255),
-    (128, 255, 255),
-    (128, 0, 255),
-    (0, 255, 64),
-    (0, 128, 255)
-    ]
+def cor_do_nome(imagem):
 
     pixels = list(imagem.getdata())
     
@@ -311,11 +309,61 @@ def process_matrix(matriz):
     
     return matriz_unificada
 
-def print_para_matriz_UNIFICADA(imagem):
+def ler_matrizes_preco(matriz):
 
-    img = Image.open(imagem)
-    img = img.convert('1')   
-    matriz = np.array(img, dtype=int)
+    indices_iguais = []
+
+    matriz = matriz.T
+    tuplas = matriz_mestre
+    for index, tupla in enumerate(tuplas):
+        for i in range(1, 8, 2):  # linhas ímpares (1, 3, 5, 7)
+            if all(matriz[i][j] == tupla[j] for j in range(8)):
+                indices_iguais.append(index)
+                break  # Se encontrar um igual, não precisa verificar as outras linhas
+    
+    return indices_iguais
+
+def separa_matriz(matriz):
+    # Converte a matriz para um array NumPy (caso ainda não seja)
+    matriz = np.array(matriz)
+    
+    # Verifica se o número de colunas é par
+    if matriz.shape[1] % 2 != 0:
+        raise ValueError("O número de colunas deve ser par")
+    
+    # Seleciona as colunas ímpares (índices 0, 2, 4, ...)
+    colunas_impares = matriz[:, ::2]
+    
+    # Seleciona as colunas pares (índices 1, 3, 5, ...)
+    colunas_pares = matriz[:, 1::2]
+    
+    return matriz_para_tuplas([tuple(linha) for linha in colunas_impares.T]), matriz_para_tuplas([tuple(linha) for linha in colunas_pares.T])
+
+def converte_para_numero(matriz_impar, matriz_par):
+    resposta = ''
+    i = 0
+    for numero in matriz_impar:
+        for num in matriz_mestre:
+            if numero == num:
+                if numero == (0,1,1,1,1,1,1,0):
+                    if matriz_par[i][3]==1:
+                        resposta= resposta+str(6)
+                        break
+                    else:
+                        resposta= resposta+str(0)
+                        break
+                resposta= resposta+str(matriz_mestre.index(num)+1)
+                break
+        i += 1
+    return int(resposta)
+                
+def numero_para_valor(gold, silver, copper):
+    return gold*10000000000 + silver*1000000 + copper
+
+def print_para_valor(imagem):
+    imagem = formatar_nome(imagem, (255,255,255))
+    imagem = imagem.convert('1')   
+    matriz = np.array(imagem, dtype=int)
 
     # matriz1 = remover_primeiras_colunas_zeradas(matriz)
     for i in range(matriz.shape[1]):
@@ -369,18 +417,33 @@ def print_para_matriz_UNIFICADA(imagem):
 
     m_copper = process_matrix(m_copper)
 
-    return m_gold, m_silver, m_copper
+    m_gold_a, m_gold_b = separa_matriz(m_gold)
 
-def ler_matrizes_preco(matriz):
+    m_silver_a, m_silver_b = separa_matriz(m_silver)
 
-    indices_iguais = []
+    m_copper_a, m_copper_b = separa_matriz(m_copper)
 
-    matriz = matriz.T
-    tuplas = matriz_mestre
-    for index, tupla in enumerate(tuplas):
-        for i in range(1, 8, 2):  # linhas ímpares (1, 3, 5, 7)
-            if all(matriz[i][j] == tupla[j] for j in range(8)):
-                indices_iguais.append(index)
-                break  # Se encontrar um igual, não precisa verificar as outras linhas
-    
-    return indices_iguais
+    gold = converte_para_numero(m_gold_a, m_gold_b)
+    # print(f'Gold: {gold}')
+
+    silver = converte_para_numero(m_silver_a, m_silver_b)
+    # print(f'silver: {silver}')
+
+    copper = converte_para_numero(m_copper_a, m_copper_b)
+    # print(f'copper: {copper}')
+
+    valor = numero_para_valor(gold, silver, copper)
+
+    return valor
+
+def printar_nome_e_valor():
+    # clicar no segundo item
+    esperar_cor_e_clicar((931, 444))
+
+    # printar o nome
+    imagem_nome = capturar_tela((808, 376), (1025, 390))
+
+    # printar o gold
+    imagem_gold = capturar_tela((1182, 398), (1287, 406))
+
+    return imagem_nome, imagem_gold

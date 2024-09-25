@@ -1,40 +1,23 @@
 from funcoes import *
 
-# time.sleep(0.2)
+time.sleep(0.2)
 
 abrir_leilao()
 
-# time.sleep(0.2)
+time.sleep(0.2)
 
-# atualizar_leilao()
+atualizar_leilao()
 
-# time.sleep(0.2)
+time.sleep(0.2)
 
-cor_nome = cor_do_nome()
+img_nome, img_gold = printar_nome_e_valor()
 
-valor = printar_preco()
+cor_nome = cor_do_nome(img_nome)
 
-valor.save('valor.png')
+print(f'cor do nome: {cor_nome}')
 
-# Exemplo de uso
-m_gold, m_silver, m_copper = print_para_matriz_UNIFICADA('valor.png')
+valor = print_para_valor(img_gold)
 
-for linha in m_gold:
-    print(' '.join(map(str, linha)))
+print(valor)
 
-print()
-
-for linha in m_silver:
-    print(' '.join(map(str, linha)))
-
-print()
-
-for linha in m_copper:
-    print(' '.join(map(str, linha)))
-
-
-print('Testando o calculo dos numeros')
-
-ver = ler_matrizes_preco(m_copper)
-
-print(f'\nbora ver:  {ver}')
+img_nome.show()
