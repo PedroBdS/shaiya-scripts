@@ -4,124 +4,16 @@ import keyboard
 from PIL import ImageGrab, Image
 import numpy as np
 
-um_ = [
-    0,
-    0,
-    1,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
-]
-
-dois_ = [
-    0,
-    1,
-    0,
-    0,
-    0,
-    0,
-    0,
-    1,
-    0
-]
-
-tres_ = [
-    0,
-    1,
-    0,
-    0,
-    0,
-    0,
-    1,
-    0,
-    0
-]
-
-quatro_ = [
-    0,
-    0,
-    0,
-    0,
-    1,
-    1,
-    0,
-    0,
-    0
-]
-
-cinco_ = [
-    0,
-    0,
-    1,
-    1,
-    0,
-    0,
-    1,
-    0,
-    0
-]
-
-seis_ = [
-    0,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    0,
-    0
-]
-
-sete_ = [
-    1,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
-]
-
-oito_ = [
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
-]
-
-nove_ = [
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
-]
-
-zero_ = [
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
+matriz_mestre = [
+    (0,0,1,0,0,0,0,0),
+    (0,1,0,0,0,0,0,1),
+    (0,1,0,0,0,0,1,0),
+    (0,0,0,0,1,1,0,0),
+    (0,0,1,1,0,0,1,0),
+    (0,1,1,1,1,1,1,0),
+    (1,0,0,0,0,0,0,0),
+    (0,1,1,0,1,1,1,0),
+    (0,1,1,1,0,0,1,0)
 ]
 
 def click_ingame(coordenada, delay=0):
@@ -479,3 +371,16 @@ def print_para_matriz_UNIFICADA(imagem):
 
     return m_gold, m_silver, m_copper
 
+def ler_matrizes_preco(matriz):
+
+    indices_iguais = []
+
+    matriz = matriz.T
+    tuplas = matriz_mestre
+    for index, tupla in enumerate(tuplas):
+        for i in range(1, 8, 2):  # linhas ímpares (1, 3, 5, 7)
+            if all(matriz[i][j] == tupla[j] for j in range(8)):
+                indices_iguais.append(index)
+                break  # Se encontrar um igual, não precisa verificar as outras linhas
+    
+    return indices_iguais

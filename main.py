@@ -31,3 +31,10 @@ print()
 
 for linha in m_copper:
     print(' '.join(map(str, linha)))
+
+
+print('Testando o calculo dos numeros')
+
+ver = ler_matrizes_preco(m_copper)
+
+print(f'\nbora ver:  {ver}')
