@@ -4,7 +4,9 @@ import keyboard
 from PIL import ImageGrab, Image
 import numpy as np
 import pytesseract
+import csv
 
+pytesseract.pytesseract.tesseract_cmd = r'C:/Program Files/Tesseract-OCR/tesseract.exe'
 
 matriz_mestre = [
     (0,0,1,0,0,0,0,0),
@@ -129,6 +131,7 @@ def abrir_leilao():
         click_ingame((1422, 1036))
         time.sleep(0.3)
         click_ingame((1250, 312))
+       
 
     if not(checar_cor((595, 246), (73, 73, 72)) and checar_cor((597, 249), (35, 34, 36))):
         print('Não foi possível abrir o leilão')
@@ -173,10 +176,11 @@ def checar_novo_item():
     # novo_nome = ler_nome()
     novo_valor = ler_valor()
 
-def atualizar_leilao(nome=False, valor=False):
-    if not nome:
+def atualizar_leilao(delay=False):
+    if not delay:
         click_ingame((1250, 312))
         return
+    time.sleep(0.05)
     click_ingame((1250, 312))
 
 def formatar_nome(image, cor_rgb):
@@ -281,7 +285,7 @@ def numero_para_valor(gold, silver, copper):
 
 def ler_valor():
 
-    click_ingame((931, 444))
+
 
     imagem = capturar_tela((1182, 398), (1287, 406))
 
@@ -361,14 +365,11 @@ def ler_valor():
     return valor
 
 def extrair_texto_imagem(imagem):
-    imagem.show()
+
     # Usa o pytesseract para extrair o texto
-    texto = pytesseract.image_to_string(imagem, lang='por')  # 'lang' define o idioma, aqui é português
+    texto = pytesseract.image_to_string(imagem)  # 'lang' define o idioma, aqui é português
     
     return texto
-
-# clicar no segundo item
-    # esperar_cor_e_clicar((931, 444))
 
 def ler_nome():
     imagem_nome = capturar_tela((808, 376), (1025, 390))
@@ -379,4 +380,23 @@ def ler_nome():
     img_nome_tratado.save('teste_lerNome.png')
 
     return nome
+
+def comparar_item(nome, valor, arquivo='lista.csv'):
+
+    with open(arquivo, mode='r', newline='', encoding='utf-8') as file:
+        reader = csv.reader(file)
+        for linha in reader:
+            if linha[0] == nome:
+                valor_arquivo = float(linha[1])  # Converte o valor para float
+                if valor > valor_arquivo:
+                    return False
+                elif valor < valor_arquivo:
+                    return True
+                else:
+                    return True
     
+    with open(arquivo, mode='a', newline='', encoding='utf-8') as file:
+        writer = csv.writer(file)
+        writer.writerow([nome, 0])  # Adiciona o nome com valor 0
+        print(f'NOVO ITEM ADICIONADO: {nome}')
+    return False
