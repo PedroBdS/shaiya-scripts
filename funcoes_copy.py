@@ -4,126 +4,6 @@ import keyboard
 from PIL import ImageGrab, Image
 import numpy as np
 
-um_ = [
-    0,
-    0,
-    1,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
-]
-
-dois_ = [
-    0,
-    1,
-    0,
-    0,
-    0,
-    0,
-    0,
-    1,
-    0
-]
-
-tres_ = [
-    0,
-    1,
-    0,
-    0,
-    0,
-    0,
-    1,
-    0,
-    0
-]
-
-quatro_ = [
-    0,
-    0,
-    0,
-    0,
-    1,
-    1,
-    0,
-    0,
-    0
-]
-
-cinco_ = [
-    0,
-    0,
-    1,
-    1,
-    0,
-    0,
-    1,
-    0,
-    0
-]
-
-seis_ = [
-    0,
-    1,
-    1,
-    1,
-    1,
-    1,
-    1,
-    0,
-    0
-]
-
-sete_ = [
-    1,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
-]
-
-oito_ = [
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
-]
-
-nove_ = [
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
-]
-
-zero_ = [
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
-]
-
 def click_ingame(coordenada, delay=0):
     coordenada2 = (coordenada[0]+1, coordenada[1])
 
@@ -393,89 +273,68 @@ def formatar_nome(image, cor_rgb):
     return nova_img
 
 def printar_preco():
-    valor = capturar_tela((1182, 398), (1287, 406))
+    valor = capturar_tela((1182, 397), (1287, 407))
     valor_formatado = formatar_nome(valor, (255,255,255))
     return valor_formatado
 
-def process_matrix(matriz):
-# Obter as dimensões da matriz
-    linhas, colunas = matriz.shape
-    
-    # Inicializar uma lista para armazenar as colunas unificadas
-    colunas_unificadas = []
-
-    # Iterar sobre a matriz em blocos de 6 colunas
-    for i in range(0, colunas, 6):
-        # Obter o bloco atual
-        bloco = matriz[:, i:i+6]
-        
-        # Verificar se o bloco tem pelo menos 2 colunas
-        if bloco.shape[1] >= 2:
-            # Extrair a primeira e a segunda coluna do bloco
-            colunas_unificadas.append(bloco[:, :2])
-    
-    # Unificar as colunas extraídas em uma nova matriz
-    matriz_unificada = np.concatenate(colunas_unificadas, axis=1)
-    
-    return matriz_unificada
-
-def print_para_matriz_UNIFICADA(imagem):
-
+def imagem_para_matriz(imagem):
+    # Abrir a imagem
     img = Image.open(imagem)
-    img = img.convert('1')   
+    
+    # Converter a imagem para modo binário (preto e branco)
+    img = img.convert('1')  # O modo '1' converte para uma imagem binária (P&B)
+    
+    # Converter a imagem para um array numpy (0 para preto, 1 para branco)
     matriz = np.array(img, dtype=int)
-
-    # matriz1 = remover_primeiras_colunas_zeradas(matriz)
+    
+    # função que remove os zeros do início da matriz
     for i in range(matriz.shape[1]):
+        # Verificar se a coluna atual é toda composta por zeros
         if np.any(matriz[:, i] == 1):
             matriz1 = matriz[:, i:]
             break
+    
+    # matriz sem zeros no início
 
-    # m_gold, matriz3 = quebrar_na_primeira_sequencia_zerada(matriz1)
-    n_colunas = matriz1.shape[1]
-    for i in range(n_colunas - 3):
-        # Verificar se as 4 colunas consecutivas a partir da i-ésima são todas zeradas
-        if np.all(matriz1[:, i] == 0) and np.all(matriz1[:, i+1] == 0) and np.all(matriz1[:, i+2] == 0) and np.all(matriz1[:, i+3] == 0):
+    # função que quebra a matriz em duas
+    n_colunas = matriz.shape[1]
+    
+    # Iterar pelas colunas até a antepenúltima (para poder verificar as próximas 3)
+    for i in range(n_colunas - 2):
+        # Verificar se as 3 colunas consecutivas a partir da i-ésima são todas zeradas
+        if np.all(matriz[:, i] == 0) and np.all(matriz[:, i+1] == 0) and np.all(matriz[:, i+2] == 0):
             # Parte esquerda: até a coluna imediatamente antes da sequência zerada
-            m_gold = matriz1[:, :i]
+            matriz_gold = matriz[:, :i]
             
             # Parte direita: da coluna após a sequência zerada até o final
-            matriz3 = matriz1[:, i+4:]
+            matriz_silver_copper = matriz[:, i+3:]
             
-            break
-
-    # matriz4 = remover_primeiras_colunas_zeradas(matriz3)
-    for i in range(matriz3.shape[1]):
-        # Verificar se a coluna atual é toda composta por zeros
-        if np.any(matriz3[:, i] == 1):
-            matriz4 = matriz3[:, i:]
-            break
-        
-    # m_silver, matriz5 = quebrar_na_primeira_sequencia_zerada(matriz4)
-    n_colunas = matriz4.shape[1]
-    for i in range(n_colunas - 3):
-        # Verificar se as 4 colunas consecutivas a partir da i-ésima são todas zeradas
-        if np.all(matriz4[:, i] == 0) and np.all(matriz4[:, i+1] == 0) and np.all(matriz4[:, i+2] == 0) and np.all(matriz4[:, i+3] == 0):
-            # Parte esquerda: até a coluna imediatamente antes da sequência zerada
-            m_silver = matriz4[:, :i]
-            
-            # Parte direita: da coluna após a sequência zerada até o final
-            matriz5 = matriz4[:, i+4:]
-            
-            break
-
-    # m_copper = remover_primeiras_colunas_zeradas(matriz5)
-    for i in range(matriz5.shape[1]):
-        # Verificar se a coluna atual é toda composta por zeros
-        if np.any(matriz5[:, i] == 1):
-            m_copper = matriz5[:, i:]
             break
     
-    m_gold = process_matrix(m_gold)
 
-    m_silver = process_matrix(m_silver)
-
-    m_copper = process_matrix(m_copper)
-
-    return m_gold, m_silver, m_copper
-
+    n_colunas = matriz_silver_copper.shape[1]
+    
+    # Iterar pelas colunas até a antepenúltima (para poder verificar as próximas 3)
+    for i in range(n_colunas - 2):
+        # Verificar se as 3 colunas consecutivas a partir da i-ésima são todas zeradas
+        if np.all(matriz_silver_copper[:, i] == 0) and np.all(matriz_silver_copper[:, i+1] == 0) and np.all(matriz_silver_copper[:, i+2] == 0):
+            # Parte esquerda: até a coluna imediatamente antes da sequência zerada
+            matriz_silver = matriz_silver_copper[:, :i]
+            
+            # Parte direita: da coluna após a sequência zerada até o final
+            matriz_0_copper = matriz_silver_copper[:, i+3:]
+            
+            break
+    
+    n_colunas = matriz.shape[1]
+    
+    # Iterar pelas colunas até a antepenúltima (para poder verificar as próximas 3)
+    for i in range(n_colunas - 2):
+        # Verificar se as 3 colunas consecutivas a partir da i-ésima são todas zeradas
+        if np.all(matriz[:, i] == 0) and np.all(matriz[:, i+1] == 0) and np.all(matriz[:, i+2] == 0):
+            # Retornar a parte da matriz antes da sequência de 3 colunas zeradas
+            matriz_copper = matriz[:, :i]
+            break
+    
+    return matriz_gold, matriz_silver, matriz_copper
+    
