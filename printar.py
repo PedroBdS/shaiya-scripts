@@ -54,7 +54,9 @@ Posição do mouse: (1187, 397), Cor do pixel: (51, 50, 22)
 Posição do mouse: (1287, 407), Cor do pixel: (51, 50, 22)
 '''
 
-capturar_tela((1182, 397), (1287, 407), './images/janela_do_preco.png')
+# capturar_tela((1182, 397), (1287, 407), './images/janela_do_preco.png')
+
+print_unique_colors('./ultemo_cor_do_nome.png')
 
 
 

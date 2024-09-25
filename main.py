@@ -1,17 +1,19 @@
 from funcoes import *
 
-shaiya_iniciou = iniciar_shaiya('PedroGeromito')
-
-if not shaiya_iniciou:
-    print(f'Falha ao entrar no Shaiya')
-    exit()
-    
-print(f'Shaiya iniciado com sucesso')
-
-time.sleep(1)
+time.sleep(0.2)
 
 abrir_leilao()
 
+time.sleep(0.2)
+
 atualizar_leilao()
 
+time.sleep(0.2)
+
 cor_nome = cor_do_nome()
+
+valor = ler_preco()
+
+valor_formatado = formatar_nome(valor, (255,255,255))
+
+valor_formatado.show()

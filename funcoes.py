@@ -220,7 +220,6 @@ def capturar_tela(coordenada1, coordenada2, arquivo_saida=False):
 
     print(f"Imagem salva como {arquivo_saida}")
 
-
 def cor_do_nome():
 
     # segundo item do leilão
@@ -246,7 +245,34 @@ def cor_do_nome():
             return pixel
         
     print(f'Falha ao identificar a cor do nome.')
-    return None
+    return (0, 0, 0)
 
 def atualizar_leilao():
     click_ingame((1250, 312))
+
+def formatar_nome(image, cor_rgb):
+
+    img = image.convert('RGB')  # Garantir que a imagem está no formato RGB
+    
+    # Criar uma nova imagem vazia (preta e branca)
+    nova_img = Image.new('L', img.size)
+    pixels = nova_img.load()
+
+    # Obter os dados da imagem original
+    img_pixels = img.load()
+
+    # Percorrer todos os pixels
+    for i in range(img.size[0]):  # Largura
+        for j in range(img.size[1]):  # Altura
+            # Se o pixel for da cor informada, pintá-lo de branco (255), senão preto (0)
+            if img_pixels[i, j] == cor_rgb:
+                pixels[i, j] = 255  # Branco
+            else:
+                pixels[i, j] = 0    # Preto
+
+    return nova_img
+
+def ler_preco():
+
+    valor = capturar_tela((1187, 397), (1287, 407))
+    return valor
