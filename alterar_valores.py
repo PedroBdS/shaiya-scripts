@@ -10,6 +10,10 @@ def rgb_to_hex(r, g, b):
 rgb_color = (12, 22, 34)  # Vermelho claro
 hex_color = rgb_to_hex(*rgb_color)
 
+def reiniciar():
+    root.destroy()  # Fecha a janela
+    iniciar_processo()
+
 # Função para confirmar a alteração do valor
 def confirmar_alteracao():
     try:
@@ -34,7 +38,7 @@ def abrir_janela_alteracao():
 
     imagem = Image.open("./arquivos_tkinter/fundo2.png")  # Use o caminho da sua imagem
     imagem_fundo = ImageTk.PhotoImage(imagem)
-
+    
     # Cria um Label para a imagem de fundo e mantém uma referência
     label_fundo = tk.Label(janela_alteracao, image=imagem_fundo)
     label_fundo.image = imagem_fundo  # Mantém a referência à imagem
@@ -66,7 +70,7 @@ def iniciar_processo():
     
     imagem = Image.open("./arquivos_tkinter/fundo.png")  # Use o caminho da sua imagem
     imagem_fundo = ImageTk.PhotoImage(imagem)
-
+    
     label_fundo = tk.Label(root, image=imagem_fundo)
     label_fundo.place(x=0, y=0, relwidth=1, relheight=1)
 
@@ -83,7 +87,10 @@ def iniciar_processo():
     label_valor.place(x=72, y=55)
 
     btn_alterar = tk.Button(root, text="ALTERAR VALOR", font=("Arial", 9, "bold"), command=abrir_janela_alteracao, bg='darkgray')
-    btn_alterar.place(x=60, y=140)
+    btn_alterar.place(x=27, y=170)
+
+    btn_reiniciar = tk.Button(root, text="Atualizar item", font=("Arial", 8), command=reiniciar, bg='darkgray')
+    btn_reiniciar.place(x=27, y=83)
 
     root.mainloop()
 

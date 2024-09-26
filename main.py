@@ -17,11 +17,11 @@ while True:
 
     if comprar:
 
-        CONFERIR_E_COMPRAR_FAKE(nome, valor)
+        CONFERIR_E_COMPRAR(nome, valor)
         print(f'Autorizada compra de {nome} por {valor}')
 
         exit()
 
     if keyboard.is_pressed('F1'):
         print("Encerrando.")
-        break
+        exit()

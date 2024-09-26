@@ -47,6 +47,28 @@ def click_ingame(coordenada, delay=0):
 def matriz_para_tuplas(matriz):
     return [tuple(int(valor) for valor in linha) for linha in matriz]
 
+def leilao_posicao_correta():
+    if not checar_cor((596, 248), (3, 2, 2)):
+        print('Leilão fechado ou fora de posição.')
+        return False
+
+    if not checar_cor((596, 845), (70, 70, 71)):
+        print('Leilão fechado ou fora de posição.')
+        return False
+
+    if not checar_cor((965, 254), (255, 255, 255)):
+        print('Leilão fechado ou fora de posição.')
+        return False   
+
+    if not checar_cor((1335, 847), (56, 56, 55)):
+        print('Leilão fechado ou fora de posição.')
+        return False
+    if not checar_cor((595, 259), (9, 9, 9)):
+        print('Leilão fechado ou fora de posição.')
+        return False
+
+    return True
+
 def esperar_cor_e_clicar(coordenada, cor=False, delay=0, ingame=True, nome=False):
 
     nome = False
@@ -276,6 +298,9 @@ def atualizar_leilao(delay=0.35):
 
         if valor_antigo != valor_novo:
             break
+        if keyboard.is_pressed('F1'):
+            print("Encerrando.")
+            exit()
     
     return nome_novo, valor_novo
 
@@ -390,8 +415,8 @@ def gold_para_valor(gold, silver, copper):
     return gold*1000000000 + silver*100000 + copper
 
 def ler_valor():
-
-
+    if not leilao_posicao_correta():
+        return "ERRO"
 
     imagem = capturar_tela((1182, 398), (1287, 406))
 
@@ -477,6 +502,8 @@ def extrair_texto_imagem(imagem):
     return texto
 
 def ler_nome():
+    if not leilao_posicao_correta():
+        return "ERRO"
     imagem_nome = capturar_tela((808, 376), (1025, 390))
     cor_nome = cor_do_nome(imagem_nome)
     img_nome_tratado = formatar_nome(imagem_nome, cor_nome)
@@ -485,7 +512,6 @@ def ler_nome():
     return nome
 
 def comparar_item(nome, valor):
-
     with open('lista.csv', mode='r', newline='', encoding='utf-8') as file:
         reader = csv.reader(file)
         for linha in reader:
