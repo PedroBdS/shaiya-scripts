@@ -5,6 +5,7 @@ from PIL import ImageGrab, Image
 import numpy as np
 import pytesseract
 import csv
+import os
 
 pytesseract.pytesseract.tesseract_cmd = r'C:/Program Files/Tesseract-OCR/tesseract.exe'
 
@@ -281,6 +282,16 @@ def converte_para_numero(matriz_impar, matriz_par):
     return int(resposta)
                 
 def gold_para_valor(gold, silver, copper):
+    if gold > 200:
+        print(f'Gold: {gold}')
+        print('deu ruim pra converter gold pra valor')
+    if silver > 9999:
+        print(f'Silver: {silver}')    
+        print('deu ruim pra converter gold pra valor')
+    if copper > 99999:
+        print(f'Copper: {copper}')
+        print('deu ruim pra converter gold pra valor')
+
     return gold*1000000000 + silver*100000 + copper
 
 def ler_valor():
@@ -367,8 +378,7 @@ def ler_valor():
 def extrair_texto_imagem(imagem):
 
     # Usa o pytesseract para extrair o texto
-    texto = pytesseract.image_to_string(imagem)  # 'lang' define o idioma, aqui é português
-    
+    texto = pytesseract.image_to_string(imagem).strip()  # Remove quebras de linha e espaços extras
     return texto
 
 def ler_nome():
@@ -379,7 +389,7 @@ def ler_nome():
 
     return nome
 
-def comparar_item(nome, valor, ):
+def comparar_item(nome, valor):
 
     with open('lista.csv', mode='r', newline='', encoding='utf-8') as file:
         reader = csv.reader(file)
@@ -420,38 +430,68 @@ def valor_para_gold(valor):
     
     return moedas_ouro, moedas_prata, moedas_cobre
 
-def encontrar_valor(nome_procurado):
+def procurar_ou_adicionar(nome_item):
+    caminho_csv = './lista.csv'
+    # Verifica se o arquivo CSV existe
+    item_encontrado = False
+    novo_dados = []
 
-    with open('./lista.csv', mode='r', encoding='utf-8') as arquivo:
-        leitor_csv = csv.reader(arquivo)
-
-        for linha in leitor_csv:            
-            if linha[0].strip().lower() == nome_procurado.strip().lower():
-                return linha[1]
-            
-    linhas = []
-    linhas.append([nome_procurado, '0'])  # Adiciona o item com valor 0
+    # Lê o arquivo CSV
+    if os.path.exists(caminho_csv):
+        with open(caminho_csv, mode='r', newline='', encoding='utf-8') as arquivo:
+            leitor = csv.reader(arquivo)
+            # Ignora o cabeçalho
+            cabecalho = next(leitor)
+            for linha in leitor:
+                item, valor = linha
+                novo_dados.append([item, valor])
+                if item == nome_item:
+                    item_encontrado = True
     
-    # Escreve as alterações de volta no arquivo CSV
-    with open('./lista.csv', mode='w', newline='', encoding='utf-8') as arquivo_csv:
-        escritor_csv = csv.writer(arquivo_csv)
-        escritor_csv.writerows(linhas)
-        print(f'\nItem "{nome_procurado}" não encontrado, adicionado com valor 0.')
-        return 0
+    if item_encontrado:
+        # Retorna o valor do item encontrado
+        for item, valor in novo_dados:
+            if item == nome_item:
+                return float(valor)  # Converte o valor para float
+    
+    # Se o item não foi encontrado, adiciona ao novo_dados com valor 0
+    novo_dados.append([nome_item, 0])
+
+    # Salva os dados de volta no arquivo CSV
+    with open(caminho_csv, mode='w', newline='', encoding='utf-8') as arquivo:
+        escritor = csv.writer(arquivo)
+        escritor.writerow(['Itens', 'Valor'])  # Escreve o cabeçalho
+        escritor.writerows(novo_dados)  # Escreve todos os dados
+
+    return 0
 
 def atualizar_item_csv(nome_item, novo_valor):
-    # Lê o conteúdo do CSV
-    linhas = []
-    with open('./lista.csv', mode='r', newline='', encoding='utf-8') as arquivo_csv:
-        leitor_csv = csv.reader(arquivo_csv)
-        for linha in leitor_csv:
-            if linha[0] == nome_item:  # Supondo que o nome do item esteja na primeira coluna
-                linha[1] = str(novo_valor)  # Supondo que o valor esteja na segunda coluna
-            linhas.append(linha)
+    caminho_csv = './lista.csv'
+    item_encontrado = False
+    novo_dados = []
 
-    # Escreve as alterações de volta no arquivo CSV
-    with open('./lista.csv', mode='w', newline='', encoding='utf-8') as arquivo_csv:
-        escritor_csv = csv.writer(arquivo_csv)
-        escritor_csv.writerows(linhas)
+    with open(caminho_csv, mode='r', newline='', encoding='utf-8') as arquivo:
+        leitor = csv.reader(arquivo)
+        cabecalho = next(leitor)  # Lê o cabeçalho
 
-    print(f'Item "{nome_item}" atualizado.')
+        # Adiciona o cabeçalho aos novos dados
+        novo_dados.append(cabecalho)
+
+        for linha in leitor:
+            item, valor = linha
+            if item == nome_item:
+                # Se o item for encontrado, atualiza o valor
+                novo_dados.append([item, novo_valor])
+                item_encontrado = True
+            else:
+                # Mantém os outros itens sem alteração
+                novo_dados.append([item, novo_valor])
+
+    # Reescreve o CSV com os dados atualizados
+    with open(caminho_csv, mode='w', newline='', encoding='utf-8') as arquivo:
+        escritor = csv.writer(arquivo)
+        escritor.writerows(novo_dados)
+
+    if not item_encontrado:
+        return print(f"Item '{nome_item}' não encontrado no arquivo.")
+
