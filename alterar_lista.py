@@ -12,7 +12,7 @@ print(f'Valor: {gold}  {silver}  {copper}\n')
 alterar = input('Alterar valor? (S/N): ')
 
 if alterar == 'S':
-    valor_moedas = str(input('Digite o valor em ouro prata e cobre separando os valores por um espaço.\n\nNovo valor: '))
+    valor_moedas = str(input('\nDigite o valor em ouro prata e cobre separando os valores por um espaço.\n\nNovo valor: '))
 
     gold_novo, silver_novo, copper_novo = int(valor_moedas.split()[0]), int(valor_moedas.split()[1]), int(valor_moedas.split()[2])
     print((f'\n\n{nome_lido}\nValor atual: {gold}  {silver}  {copper} \nNovo  valor: {gold_novo}  {silver_novo}  {copper_novo}\n'))
@@ -26,6 +26,7 @@ if alterar == 'S':
         # print(nome_lido)
         # print(valor_novo)
 
-        print('tentando...')
+        print('Alterando...')
         atualizar_item_csv(nome_lido, valor_novo)
-        print('concluído')
+        time.sleep(0.5)
+        print('Concluído!\n')
