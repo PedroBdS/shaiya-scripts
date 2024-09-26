@@ -1,12 +1,9 @@
 from funcoes import *
 
-abrir_leilao()
-
-time.sleep(0.2)
-
-nome = ler_nome()
-
 valor = ler_valor()
 
-print(f'\nNome: {nome}\nValor: {valor}')
+print(f'Valor lido: {valor}')
 
+ouro, prata, cobre = converter_para_moedas(valor)
+
+print(f"Reconversão:\nOuro: {ouro}, Prata: {prata}, Cobre: {cobre}")

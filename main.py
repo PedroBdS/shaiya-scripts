@@ -21,7 +21,9 @@ while True:
 
     comprar = comparar_item(nome, valor)
 
-    # print(f'Comprar = {comprar}')
+    if comprar:
+        COMPRAR()
+        print(f'Autorizada compra de {nome} por {valor}')
 
     if keyboard.is_pressed('q'):
         print("Encerrando.")

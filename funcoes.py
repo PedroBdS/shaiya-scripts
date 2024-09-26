@@ -280,7 +280,7 @@ def converte_para_numero(matriz_impar, matriz_par):
         i += 1
     return int(resposta)
                 
-def numero_para_valor(gold, silver, copper):
+def gold_para_valor(gold, silver, copper):
     return gold*1000000000 + silver*100000 + copper
 
 def ler_valor():
@@ -360,7 +360,7 @@ def ler_valor():
     copper = converte_para_numero(m_copper_a, m_copper_b)
     # print(f'copper: {copper}')
 
-    valor = numero_para_valor(gold, silver, copper)
+    valor = gold_para_valor(gold, silver, copper)
 
     return valor
 
@@ -377,13 +377,11 @@ def ler_nome():
     img_nome_tratado = formatar_nome(imagem_nome, cor_nome)
     nome = extrair_texto_imagem(img_nome_tratado)
 
-    img_nome_tratado.save('teste_lerNome.png')
-
     return nome
 
-def comparar_item(nome, valor, arquivo='lista.csv'):
+def comparar_item(nome, valor, ):
 
-    with open(arquivo, mode='r', newline='', encoding='utf-8') as file:
+    with open('lista.csv', mode='r', newline='', encoding='utf-8') as file:
         reader = csv.reader(file)
         for linha in reader:
             if linha[0] == nome:
@@ -395,8 +393,65 @@ def comparar_item(nome, valor, arquivo='lista.csv'):
                 else:
                     return True
     
-    with open(arquivo, mode='a', newline='', encoding='utf-8') as file:
+    with open('lista.csv', mode='a', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)
         writer.writerow([nome, 0])  # Adiciona o nome com valor 0
         print(f'NOVO ITEM ADICIONADO: {nome}')
     return False
+
+def COMPRAR():
+    click_ingame((992, 393))
+    time.sleep(0.01)
+    click_ingame((1060, 818))
+    time.sleep(0.01)
+    click_ingame((913, 541))
+    time.sleep(0.01)
+    click_ingame((960, 541))
+
+def valor_para_gold(valor):
+    if valor>201000000000:
+        print('Algo de errado com o valor.')
+        return
+    valor_str = str(valor).zfill(12)
+    
+    moedas_ouro = int(valor_str[:3])
+    moedas_prata = int(valor_str[3:7])
+    moedas_cobre = int(valor_str[7:])
+    
+    return moedas_ouro, moedas_prata, moedas_cobre
+
+def encontrar_valor(nome_procurado):
+
+    with open('./lista.csv', mode='r', encoding='utf-8') as arquivo:
+        leitor_csv = csv.reader(arquivo)
+
+        for linha in leitor_csv:            
+            if linha[0].strip().lower() == nome_procurado.strip().lower():
+                return linha[1]
+            
+    linhas = []
+    linhas.append([nome_procurado, '0'])  # Adiciona o item com valor 0
+    
+    # Escreve as alterações de volta no arquivo CSV
+    with open('./lista.csv', mode='w', newline='', encoding='utf-8') as arquivo_csv:
+        escritor_csv = csv.writer(arquivo_csv)
+        escritor_csv.writerows(linhas)
+        print(f'\nItem "{nome_procurado}" não encontrado, adicionado com valor 0.')
+        return 0
+
+def atualizar_item_csv(nome_item, novo_valor):
+    # Lê o conteúdo do CSV
+    linhas = []
+    with open('./lista.csv', mode='r', newline='', encoding='utf-8') as arquivo_csv:
+        leitor_csv = csv.reader(arquivo_csv)
+        for linha in leitor_csv:
+            if linha[0] == nome_item:  # Supondo que o nome do item esteja na primeira coluna
+                linha[1] = str(novo_valor)  # Supondo que o valor esteja na segunda coluna
+            linhas.append(linha)
+
+    # Escreve as alterações de volta no arquivo CSV
+    with open('./lista.csv', mode='w', newline='', encoding='utf-8') as arquivo_csv:
+        escritor_csv = csv.writer(arquivo_csv)
+        escritor_csv.writerows(linhas)
+
+    print(f'Item "{nome_item}" atualizado.')
