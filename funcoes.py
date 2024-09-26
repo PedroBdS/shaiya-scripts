@@ -501,7 +501,7 @@ def comparar_item(nome, valor):
     with open('lista.csv', mode='a', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)
         writer.writerow([nome, 0])  # Adiciona o nome com valor 0
-        print(f'NOVO ITEM ADICIONADO: {nome}')
+        # print(f'NOVO ITEM ADICIONADO: {nome}')
     return False
 
 def CONFERIR_E_COMPRAR(nome, valor):

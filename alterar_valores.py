@@ -2,6 +2,13 @@ import tkinter as tk
 from tkinter import messagebox
 from funcoes import *
 from PIL import Image, ImageTk
+import emoji
+
+def rgb_to_hex(r, g, b):
+    return '#%02x%02x%02x' % (r, g, b)
+
+rgb_color = (12, 22, 34)  # Vermelho claro
+hex_color = rgb_to_hex(*rgb_color)
 
 # Função para confirmar a alteração do valor
 def confirmar_alteracao():
@@ -10,8 +17,8 @@ def confirmar_alteracao():
         gold_novo, silver_novo, copper_novo = map(int, valor_moedas.split())
         valor_novo = gold_para_valor(gold_novo, silver_novo, copper_novo)
         atualizar_item_csv(nome_lido, valor_novo)
-        messagebox.showinfo("Concluído", "Valor alterado com sucesso!")
         root.destroy()  # Fecha a janela
+        iniciar_processo()
     except Exception as e:
         messagebox.showerror("Erro", f"Erro ao alterar valor: {e}")
 
@@ -25,7 +32,15 @@ def abrir_janela_alteracao():
     janela_alteracao.title("Alterar Valor")
     janela_alteracao.geometry("400x220+-470+380")  # Janela de 400x300 posicionada 500px à direita e 200px para baixo
 
-    label_instrucoes = tk.Label(janela_alteracao, text="Digite o valor em ouro, prata e cobre (separados por espaço):")
+    imagem = Image.open("./arquivos_tkinter/fundo2.png")  # Use o caminho da sua imagem
+    imagem_fundo = ImageTk.PhotoImage(imagem)
+
+    # Cria um Label para a imagem de fundo e mantém uma referência
+    label_fundo = tk.Label(janela_alteracao, image=imagem_fundo)
+    label_fundo.image = imagem_fundo  # Mantém a referência à imagem
+    label_fundo.place(x=0, y=0, relwidth=1, relheight=1)
+
+    label_instrucoes = tk.Label(janela_alteracao, text="Digite o valor em ouro, prata e cobre", font=("Arial", 10), bg=hex_color, fg="white")
     label_instrucoes.pack(pady=10)
 
     entry_valor = tk.Entry(janela_alteracao)
@@ -55,20 +70,26 @@ def iniciar_processo():
     label_fundo = tk.Label(root, image=imagem_fundo)
     label_fundo.place(x=0, y=0, relwidth=1, relheight=1)
 
-    texto_item = tk.Label(root, text=f'Item identifcado')
-    texto_item.pack(pady=10)
+    img_icone = printar_coordenadas((756, 375), (788, 407))
+    icone = ImageTk.PhotoImage(img_icone)
 
-    label_nome = tk.Label(root, text=f'{nome_lido}', font=("Arial", 14, "bold"))
-    label_nome.place(x=75, y=39)
-    # label_nome.pack(pady=10)
+    icone_sla = tk.Label(root, image=icone)
+    icone_sla.place(x=27, y=38)
 
-    label_valor = tk.Label(root, text=f'Valor: {gold}g {silver}s {copper}c')
-    label_valor.pack(pady=10)
+    label_nome = tk.Label(root, text=f'{nome_lido}', font=("Arial", 10, "bold"), bg=hex_color, fg="white")
+    label_nome.place(x=72, y=31)
 
-    btn_alterar = tk.Button(root, text="Alterar Valor", command=abrir_janela_alteracao)
-    btn_alterar.pack(pady=10)
+    label_valor = tk.Label(root, text=f'{gold}g  {silver}s  {copper}c', font=("Arial", 10), bg=hex_color, fg="white")
+    label_valor.place(x=72, y=55)
+
+    btn_alterar = tk.Button(root, text="ALTERAR VALOR", font=("Arial", 9, "bold"), command=abrir_janela_alteracao, bg='darkgray')
+    btn_alterar.place(x=60, y=140)
 
     root.mainloop()
 
 # Inicia o processo
 iniciar_processo()
+
+# cor de fundo 12, 22, 34
+
+# COORDENADAS DO ICONE NO LEILÃO: (756, 375), (788, 407)
