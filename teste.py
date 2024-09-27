@@ -1,3 +1,5 @@
 from funcoes import *
 
-print(leilao_posicao_correta())
+leilao_aberto_1 = corrigir_leilao()
+
+print(leilao_aberto_1)

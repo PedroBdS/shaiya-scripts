@@ -58,11 +58,11 @@ Posição do mouse: (1187, 397), Cor do pixel: (51, 50, 22)
 Posição do mouse: (1287, 407), Cor do pixel: (51, 50, 22)
 '''
 
-valor = capturar_tela((808, 376), (1025, 390))
+valor = capturar_tela((754, 376), (782, 406))
 
-valor.show()
+valor.save('./images/fundoleilao.png')
 
-print_unique_colors('./ultemo_cor_do_nome.png')
+print_unique_colors('./images/fundoleilao.png')
 
 
 

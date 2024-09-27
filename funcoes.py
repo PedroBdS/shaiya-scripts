@@ -49,24 +49,23 @@ def matriz_para_tuplas(matriz):
 
 def leilao_posicao_correta():
     if not checar_cor((596, 248), (3, 2, 2)):
-        print('Leilão fechado ou fora de posição.')
+        # print('Leilão fechado ou fora de posição.')
         return False
 
     if not checar_cor((596, 845), (70, 70, 71)):
-        print('Leilão fechado ou fora de posição.')
+        # print('Leilão fechado ou fora de posição.')
         return False
 
     if not checar_cor((965, 254), (255, 255, 255)):
-        print('Leilão fechado ou fora de posição.')
+        # print('Leilão fechado ou fora de posição.')
         return False   
 
     if not checar_cor((1335, 847), (56, 56, 55)):
-        print('Leilão fechado ou fora de posição.')
+        # print('Leilão fechado ou fora de posição.')
         return False
     if not checar_cor((595, 259), (9, 9, 9)):
-        print('Leilão fechado ou fora de posição.')
+        # print('Leilão fechado ou fora de posição.')
         return False
-
     return True
 
 def esperar_cor_e_clicar(coordenada, cor=False, delay=0, ingame=True, nome=False):
@@ -147,18 +146,6 @@ def printar_coordenadas(cord1, cord2):
 
 def identificar_erros():
     tela_img = printar_coordenadas((854, 461), (895, 493))
-
-def abrir_leilao():
-
-    if not(checar_cor((595, 246), (73, 73, 72)) and checar_cor((597, 249), (35, 34, 36))):
-        click_ingame((1422, 1036))
-        time.sleep(0.3)
-        click_ingame((1250, 312))
-       
-
-    if not(checar_cor((595, 246), (73, 73, 72)) and checar_cor((597, 249), (35, 34, 36))):
-        print('Não foi possível abrir o leilão')
-        return False
 
 def iniciar_shaiya(conta):
     time.sleep(0.2)
@@ -262,14 +249,17 @@ def capturar_tela(coordenada1, coordenada2, arquivo_saida=False):
 
     print(f"Imagem salva como {arquivo_saida}")
 
-def cor_do_nome(imagem):
+falhas_cor = 0
 
+def cor_do_nome(imagem):
+    global falhas_cor
     pixels = list(imagem.getdata())
     
     for pixel in pixels:
         if pixel in cores_predefinidas:
             return pixel
-        
+    falhas_cor += 1
+    imagem.save(f'./falhas_de_cor/img({falhas_cor})')
     print(f'Falha ao identificar a cor do nome.')
     return (0, 0, 0)
 
@@ -279,6 +269,9 @@ def checar_novo_item():
     novo_valor = ler_valor()
 
 def atualizar_leilao(delay=0.35):
+    if not leilao_posicao_correta():
+        corrigir_leilao()
+        return False
 
     nome_antigo = ler_nome()
     valor_antigo = ler_valor()
@@ -399,8 +392,12 @@ def converte_para_numero(matriz_impar, matriz_par):
                 resposta= resposta+str(matriz_mestre.index(num)+1)
                 break
         i += 1
-    return int(resposta)
-                
+    try:
+        a = int(resposta)
+        return a
+    except:
+        return False
+                 
 def gold_para_valor(gold, silver, copper):
     if gold > 200:
         print(f'Gold: {gold}')
@@ -415,8 +412,9 @@ def gold_para_valor(gold, silver, copper):
     return gold*1000000000 + silver*100000 + copper
 
 def ler_valor():
+
     if not leilao_posicao_correta():
-        return "ERRO"
+        return False
 
     imagem = capturar_tela((1182, 398), (1287, 406))
 
@@ -491,6 +489,9 @@ def ler_valor():
     copper = converte_para_numero(m_copper_a, m_copper_b)
     # print(f'copper: {copper}')
 
+    if not gold or not silver or not copper:
+        return False
+
     valor = gold_para_valor(gold, silver, copper)
 
     return valor
@@ -502,13 +503,13 @@ def extrair_texto_imagem(imagem):
     return texto
 
 def ler_nome():
-    if not leilao_posicao_correta():
-        return "ERRO"
+
     imagem_nome = capturar_tela((808, 376), (1025, 390))
     cor_nome = cor_do_nome(imagem_nome)
     img_nome_tratado = formatar_nome(imagem_nome, cor_nome)
     nome = extrair_texto_imagem(img_nome_tratado)
-
+    if not isinstance(nome, str) or not leilao_posicao_correta():
+        return False
     return nome
 
 def comparar_item(nome, valor):
@@ -678,3 +679,52 @@ def CONFERIR_E_COMPRAR_FAKE(nome, valor):
 
     # Selecionar o segundo item novamente
     click_ingame((931, 444))
+
+def abrir_leilao():
+    if not(checar_cor((595, 246), (73, 73, 72)) and checar_cor((597, 249), (35, 34, 36))):
+        click_ingame((1422, 1036))
+        time.sleep(0.3)
+        click_ingame((1250, 312))
+       
+    if not(checar_cor((595, 246), (73, 73, 72)) and checar_cor((597, 249), (35, 34, 36))):
+        return False
+
+def _corrigir_leilao():
+    try:
+        # Tenta localizar a imagem na tela
+        localizacao = pyautogui.locateOnScreen('./images/leilao.png', confidence=0.8)
+        
+        if localizacao:
+            if localizacao.left == 658 and localizacao.top == 378:
+                return True
+            else:
+                pyautogui.mouseDown(localizacao.left, localizacao.top-50)
+                pyautogui.moveTo(658, 328)
+                pyautogui.mouseUp(658, 328)
+
+                # if not leilao_posicao_correta():
+                #     return False
+                return True
+        else:
+            abrir_leilao()
+            if not leilao_posicao_correta():
+                return False
+            return True
+
+    except pyautogui.ImageNotFoundException:
+        abrir_leilao()
+    if not leilao_posicao_correta():
+            return False
+    return True
+
+def corrigir_leilao():
+    if leilao_posicao_correta():
+        click_ingame((1250, 312))
+    if not _corrigir_leilao():
+        if not _corrigir_leilao():
+            print('não foi possível abrir o leilão corretamente')
+            return False
+        else:
+            return True
+    else:
+        return True

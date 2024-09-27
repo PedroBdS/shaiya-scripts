@@ -10,8 +10,29 @@ time.sleep(0.4)
 click_ingame((931, 444))
 
 while True:
+    if keyboard.is_pressed('F1'):
+        print("Encerrando.")
+        exit()
 
-    nome, valor = atualizar_leilao()
+    if not leilao_posicao_correta():
+        corrigir_leilao()
+
+    if not atualizar_leilao():
+        continue
+    
+    try:
+        nome, valor = atualizar_leilao()
+
+    except:
+        continue
+
+    if not nome:
+        corrigir_leilao()
+        continue
+
+    if not valor:
+        corrigir_leilao()
+        continue
 
     comprar = comparar_item(nome, valor)
 
@@ -19,8 +40,6 @@ while True:
 
         CONFERIR_E_COMPRAR(nome, valor)
         print(f'Autorizada compra de {nome} por {valor}')
-
-        exit()
 
     if keyboard.is_pressed('F1'):
         print("Encerrando.")

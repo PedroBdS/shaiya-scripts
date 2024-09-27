@@ -1,7 +1,7 @@
 Itens,Valor
 teste1,0
 teste2,0
-Martelo de Conexao Divino,0
+Martelo de Conexao Divino,15000000
 Lapis Triplo Sabio-,0
 Lapis de Absorgao Ly?,0
 Protetor Imperial do Sabio-,10000000
@@ -28,7 +28,7 @@ Frasco de Esséncia Celestial,0
 Capa da Prosperidade,0
 Kit de atiracor,0
 Bau do Conjurador Arcano,0
-Amuleto Natalino |,10000000
+Amuleto Natalino |,750000000
 Calga Luminosa Imperial,0
 Olho Degenerado,0
 Manopla de Autoridade Bril.,0
@@ -106,8 +106,8 @@ Escuridao do Yazio-,10000000
 Clava de Espinhos Herdica,10000000
 Passaro Negro Herdico:,10000000
 Colar Natalino |,10000000
-Anel Natalino-,10000000
-Bracelete Natalino |,10000000
+Anel Natalino-,750000000
+Bracelete Natalino |,750000000
 Bracelete do Sol Ardente,10000000
 Hoplon Herdico,10000000
 Escudo Herdico:,10000000
@@ -152,7 +152,7 @@ Unhas Infinitas:,0
 Botas Imperiais do Horizonte,10000000
 Lengo Tatoram Perito,0
 Runa de Batalha Real (30 dias),300000000
-Caixa de Lapisia para Arma 3 (Nv 16 a Nv 20,0
+Caixa de Lapisia para Arma 3 (Nv 16 a Nv 20,10000000
 Remedio Resisténcia Ly2_,0
 Malha Luminosa Corrupta de Terra,0
 Lapis Luz do Fogo Lv.2.,0
@@ -343,3 +343,735 @@ Capa Imperial de Ranger,10000000
 Capa de Guilherme Tell.,10000000
 Capa Imperial de Assassino-,10000000
 Capa da Defesa de Troia-,10000000
+Capa do Juramento de Hipoc.,0
+Botas Tathar Legendario:,0
+Tintura de Montaria Crowly,0
+Prevengao de queda de Item.,0
+GM Encanto Ly.15_,0
+Lapis da Sonoléncia Lv?,0
+Lapis Seguro Triplo Definitivo:,0
+Calgas de Imperador,0
+Lapis Astuto Triplo Definitivo |,0
+Lapis do Azar Lv?,0
+Armadura Inferior Eremita,0
+Capa Infinita de Cagador,0
+Luyvas Yallum,0
+Dual Mystic Lapis Ly?,0
+Luvas Adamas Deusa,0
+Plumas da Coragem,0
+Quadrado Cintilante Leve,0
+Escudo Graven,0
+Espada Sagrada,0
+Calga de Placa Legendario |,0
+Bracadeira de Lutador Rara-,0
+Remedio Etain Lv.2-,0
+Runa de Recriagao (VIS),0
+Arco Follushe,0
+Pluma dos Deuses:,0
+Lapis Sonico Lv1,0
+Fragmento de Lapis Astuto Triplo-,0
+Fragmento de Lapis Mistico Triplo,0
+Amuleto do Sol Ardente,0
+Anel do Papai Noel Ly.3-,0
+Arco de Ataque Atroz,0
+Lapis Astucia Duplo Nv6-,0
+Lapis em forma de Coragao,0
+Lapis Ponto Cego Ly?,0
+Amuleto de Lutador Raro-,0
+Armadura Perseguidor,0
+Grito do Dragao:,0
+Lapis de Vigor Lv,0
+Luvas Perseguidor,0
+Amuleto Sénico Natalino |,0
+Fogos de Artificio Vitoria:,0
+Botas Persequidor,0
+Lapis de Rasteiar Ly?,0
+Lapis Silencioso Ly?,0
+Capa Cruel Siria.,0
+Armadura Luminosa Clerigo de Fogo:,0
+Lapis Panico Lv?,0
+Vahala Atroz:,0
+Capa da Sagacidade,0
+GM Encanto Ly.14,0
+Runa de Batalha Media (24 horas),0
+Capa Afortunada,0
+Bracelete de Reino,0
+Lapis Desorientagao Ly?,0
+Malha Luminosa de Rancor,0
+Crista de Retidao:,0
+[100)Etin:,0
+Lapis Fortuna Duplo Nv?,0
+[10)Etin,0
+(1]JEtin,0
+GM Encanto Ly.13,0
+Lapis da Astucia Lv6,0
+Lapis Astuto Triplo-,0
+Caiado Cruz Herdico:,0
+Armadura Luminosa Imperial,0
+Voz Divina Intinita:,0
+Lapis Sabio Triplo Definitivo:,0
+Lanceta Infinita de Cavaleiro,0
+Grotesca Infinito |,0
+Armadura Inferior Lusco Le.,0
+Capa do Conflito |,0
+Capa Brilhante,0
+Arma Lapisia:,0
+Agua Benta da Fronteira:,0
+Pogao Etain Lyv1,0
+Espada Runa Gaia,0
+Capacete Unicornio Legendario |,0
+Pedra de Stats:,0
+Botas Celeritas,0
+Calgas Celeritas:,0
+Luvas Celeritas dos Sonhos,0
+Manto Celeritas,0
+Capa do Perseguidor,0
+Runa da Ressurreigao,0
+Caixa de Lapisia para Arma 2 (Nv 11 a Nv 15,0
+Bota Luminosa Imperador,0
+Lapis Mistico Duplo Ly4,0
+Lapis Proibido Ly?,0
+Runa de Recriagao (DEX),0
+Lapis Seguro N. 9,0
+Laminas Terriveis da Morte,0
+Manto Azriel,0
+Lapis Artesanal Duplo Ny?,0
+Arco da Alma,0
+Botas de Autoridade Respla.,0
+Anel de Ouro de Defensor,0
+Brionac,0
+Lapis Triplo Seguro,0
+Espada Demoniaca,0
+Bota Luminosa Imperial,0
+Soco Inglés Pendulo-,0
+Lapis Lento Lv6-,0
+Fragmento de Lapis Triplo Seguro,0
+Anel Artesanal Heroico:,0
+Fragmento de Lapis Triplo Fortuna,0
+Lapis Desorientagao Lv6-,0
+Fragmento de Lapis Triplo Sabio-,0
+Runa de Recriagao (LUC),0
+Armadura Luminosa Imperador de Fogo:,0
+Token de Restauragao de Nivel.,0
+Luva Luminosa Imperador,0
+Pedago de Asa,0
+Amuleto de Ouro de Clerigo:,0
+Anel de Ouro de Clerigo,0
+Lapis Vivido N. 9,0
+Anel Resplandescente de Cl.,0
+Lapis Artesanal N. 9°,0
+Lapis Sabio Duplo Lv,0
+Anel Resplandescente de Or.,0
+GM Encanto Ly.20°,0
+Lapis Seguro Duplo Ly,0
+Lapis Artesanal Duplo LyS-,0
+Amago Manitu-,0
+Capa Fatal,0
+Token de Impulso de Recreagao:,0
+Botas Mithril Perito,0
+Coragao Vivo.,0
+Manto Lamiel,0
+Fragmento de Estrela Cadtica:,0
+Lucifer Herdico |,0
+Quadrado Caotico Luz,0
+Caixa de ltens de Joias Eternas,0
+Tintura de Armadura Crowly,0
+Capacete Deprimo,0
+GM Encanto Ly.16,0
+Anel de Lutador Resplandes.,0
+Cobra Perversa:,0
+Bracadeira de Lutador Resp.,0
+Faros Pilum,0
+Lapis Artesanal Triplo-,0
+Lapis de Absorgao LyvS-,0
+Inferno Atroz:,0
+Luvas Adamas Herdico:,0
+Crista de Engano:,0
+Lapis Estrelar,0
+Manto Karoum,0
+Carino Hrapsodia:,0
+Fragmento de Placa Caos,0
+Martelo da Dificuldade,0
+Lapis Mental Ly?,0
+Lapis Mental Lv6_,0
+Lapis Mistico Lv6-,0
+Lapis Choque Terrestre Ly.2.,0
+Lapis Luz da Agua Ly.2.,0
+Lapis Sabio Lv6-,0
+Recreation GM: LUC,0
+Lapis Seguro Ly6-,0
+Lapis Panico Terrestre Ly.2,0
+Nirvana Intinito:,0
+Manto Zagzagel,0
+Lapis Fogo Ardente Lv.2.,0
+Aumento de EXP 7 dias,0
+Token de Recreagao Maxima,0
+Caixa de Foria do Campeao,0
+Lapis Rasyo-,0
+Caixa de Escudo do Sentinela,0
+Amuleto de Ouro de Lutador,0
+Armadura Conflito |,0
+Elmo dos Duendes (F),0
+Runa de Recriagao,0
+Lapis Artesanal Lv6-,0
+GM Bolsa Recreativa,0
+Lapis Luz do Fogo Lv.1,0
+Bracelete Nobre,0
+Runa Recriagao Absolute:,0
+Lapis Silencioso Ly6-,0
+Lapis Sabio Duplo Ly3-,0
+Martelo de Reparo,0
+Tintura de Mascote Crowly,0
+Anel Raro de Guerreiro:,0
+Lapis Artesanal Lv5-,0
+Pogao Arcana,0
+Recreagao Exchange: INT,0
+Caixa de Odin 2,0
+Token de Restauragao de Item,0
+Lapis Capacete REC,0
+Martelo Glorioso,0
+Calga Luminosa do Sabio-,0
+Lapis Mistico Lv5-,0
+Pedra Invoca Fenix Terrestre:,0
+Lapis da Astucia LyS-,0
+Arcubalista Atroz:,0
+Grama,0
+Anel de Cobre de Arqueiro,0
+Tentaculo Degenerado,0
+Remedio Resistencia Ly3 XT,0
+Protetor Caido Resplandesc.,0
+Manopla Mistica Brilhante,0
+Botas Caidas Resplandescentes,0
+Botas Misticas Brilhantes,0
+Armadura Brilhante de Terra:,0
+Lapis Adeo,0
+Arcubalista Legendario,0
+Capacete Medicus,0
+Remedio Agilidade Lvy3 XT,0
+Dente de Dragao Legendario:,0
+Capacete Caido Resplandesc.,0
+O Absoluto Legendario:,0
+Inferno Legendario-,0
+Sangue Rubro Legendario:,0
+Nemesis Intinita.,0
+Ascalao Legendario,0
+Escudo Messias Escarlate L.,0
+Capa Infinita de Arqueiro:,0
+Pedra de Skill,0
+Nostrum da Arte Negra:,0
+GM Encanto Ly.6,0
+Runa de Batalha Media (7 dias),0
+Poeira Cosmica,0
+Luvas Dentron Yénia,0
+GM Encanto Ly.1.,0
+GM Encanto Ly.3-,0
+GM Encanto Ly.10°,0
+Rachroma Ashe,0
+Lapis Artesanal Duplo Ly3-,0
+Armadura Luminosa Suprema de Terra:,0
+Armadura Luminosa Imperial de Fogo.,0
+Pogaa Intocavel Lv1_,0
+Lapis Seguro Ly5-,0
+Calgas de Autoridade Brilh.,0
+Calgado Fatal,0
+Calgado Sinistro-,0
+Botas Brilhantes |,0
+Princesa de Ferro,0
+Lapis Capacete LUC,0
+Malha Luminosa Corrupta de Agua:,0
+Capacete Quine,0
+Recreagao Exchange: REC,0
+Elmo Dragao Anciao,0
+Armadura Inferior Caida Br.,0
+Protetor Inferior Caido Br.,0
+Lapis Mistico Triplo-,0
+Aumento de Ouro 30 dias,0
+Pergaminho de Teleporte da Cidade,0
+Mineério de ferro bruto:,0
+Lucky Lapis,0
+Floco de Neve de Poseidon:,0
+Capa da Vitoria:,0
+Depdsito Duplo.,0
+Lapis da Vida Lyd,0
+Lapis Ventania Ly.2-,0
+Malha Luminosa Yinganga de Terra:,0
+Lapis Seguro Lyd,0
+Lapis escurc,0
+Recreation GM: REC,0
+GM Encanto Ly.17_,0
+Elmo Luminoso de Clerigo,0
+Fragmento de Lapis Artesanal Triplo-,0
+Nostrum Defesa XT,0
+Nostrum Golpe Limpo XT,0
+Protetor Lusco Legendario |,0
+Capa do Defensor,0
+Anel Resplandescente de Gu.,0
+Runa Revocagao do Depasito |,0
+Lapis do Azar Lv6,0
+Lapis Panico Lv6,0
+Lapis Enfermo Lv6-,0
+Anel da Determinagao,0
+Runa de Ressurreigao 30 dias:,0
+Lapis Sabio duplo Ny?,0
+Botas Terra Atroz,0
+Armadura de Autoridade Bri.,0
+Armadura Mistica Brilhante,0
+Runa de Ressurreigao 15 dias:,0
+Lapis Fortuna Duplo Lv1,0
+Besta Tiro Mortal,0
+Lapis Astucia Duplo Lv3-,0
+Capa Reforgada,0
+Fragmento de Lapis Horizonte,0
+Demolidor Infinite,0
+Amuleto de Saude Ly2-,0
+Capa de Robin Hood:,0
+Armadura Imperial Brilha:,0
+Capacete de Imperador Resp.,0
+Dor Imortal Atroz,0
+Armadura Resplandescente d.,0
+Recreagao Max: INT,0
+Agonia Infinito-,0
+Elmo Luminoso do Sabio,0
+Lamina do Sucesso Atroz,0
+Calgado Adamas Atroz:,0
+Coragao Leao Atroz,0
+Armadura Dragao Atroz,0
+Acido Aurico Infinito:,0
+Nostrum Yeloz,0
+Lapis Capacete vVIS-,0
+Nostrum Dominador de Armas,0
+Lapis Puro,0
+Lapis Capacete STR,0
+Lapis Proibido LyS-,0
+Agua Benta de Prolelium,0
+Lapis do Engano Lv6-,0
+Tormenta Tempestuosa-,0
+Engolidor de Cadaver Legen.,0
+Lapis Choque Terrestre Ly.1.,0
+Lapis da Vida Lv6,0
+Garra Nobre-,0
+Bigorna do Amuleto Eterna,0
+Luvas Conflito:,0
+Luvas Obstinadas,0
+Garra Ferro Yéenia-,0
+Leao Furioso,0
+Lapis Sabio Duplo Ly2-,0
+Lapis Artesanal Duplo Ly4,0
+Armadura Luminosa do Sabio-,0
+Lapis Artesanal Duplo Lv1,0
+Lapis Decd,0
+Armadura de Campeao,0
+Armadura do Feiticeiro,0
+Calga Luminosa Suprema.,0
+Anel do Sol Ardente-,0
+coragao diabolico:,0
+Pedra de Adamar,0
+Couro magico:,0
+Foice Infinito,0
+Dente de Dragao Atroz,0
+Armadura Adamas Anciao,0
+Ganhadora Antiga Infinita,0
+Anel de Ouro de Mago,0
+Bota Luminosa Autoritas:,0
+Calga Luminosa Autoritas,0
+Armad. Luminosa Autoritas:,0
+Bracadeira de Ouro de Oraculo,0
+Agua Benta de Cantabilian:,0
+Lapis Sabio Ly?,0
+Lapis Pergaminho do Vento:,0
+Amuleto de Ouro de Defensor,0
+Runa de Ressurreigao 3h,0
+Armadura Perseguidor de Terra:,0
+Armadura Inferior Respland.,0
+Lapis Interser,0
+Heraldica da Condenagao,0
+Amuleto de Ouro de Ranger,0
+Bracadeira de Ouro de Ranger,0
+Avambraco Caido Resplandes.,0
+Armadura Luminosa do Sabio de Vento:,0
+Lapis Mistico Lv?,0
+Lapis Mecanico N° 3°,0
+Alustera Infinito.,0
+Espada Celestial Intinita.,0
+Armadura Luminosa Suprema de Agua:,0
+Protetor da Vingan¢ga,0
+Bota Luminosa Suprema,0
+Botas de Vinganga Brilhantes |,0
+Lapis Mistico Lv3-,0
+Armadura Dragao Deusa,0
+Runa de Batalha Real (7 dias),0
+Elmo Luminoso Imperial,0
+Bota Luminosa Matador,0
+Beriunse,0
+Lapis Mistico Triplo Definitivo:,0
+Lapis Astucia Duplo Nv?,0
+Lapis Sensato N. 9°,0
+Lapis Mistico de Capacete Ly2-,0
+Dual Safe Lapis Lv6-,0
+Lapis Seguro de Capacete Ly2.,0
+Armadura Luminosa Suprema |,0
+Dual Mystic Lapis Lv6-,0
+Dedo Divino Intinito:,0
+Cajado Sabio Infinito.,0
+Bracelete Brilhante da Deusa,0
+Colar Brilhante da Deusa-,0
+Runa de Batalha Fraca (7 dias).,0
+Armadura Luminosa Imperial de Agua:,0
+Triturador de Almas Infinito,10000000
+Manto Mion,10000000
+Resistencia Eterna 30 dias,0
+Luvas Unicornio Legendario |,0
+Lapis das Sombras,0
+Amago Arvore Dourada,0
+Trigéemeos,0
+Recreagao Max: DEX,0
+Tiro de Pan,0
+Bigorna do Anel Eterno:,0
+Malha Luminosa Profana:,0
+Sorvete de baunilha:,0
+Calga Joia,0
+Botas Joia,0
+Parafuso Pequeno,0
+Armagao de Metal,0
+Fio Curto:,0
+Placa Pequena de Metal,0
+Placa Premium de Metal,0
+Microplaca de Metal,0
+Nanotio,0
+Microtio |,0
+Mapa da Masmorra (24h),0
+Pedra Teleportadora,0
+Globo Infinito.,0
+Transporte ao Contrabando,0
+Capacete Deinos Deusa_,0
+Poeira Estelar Cadtica:,0
+Fragmento de Estrela Infinita,0
+Luvas Axo Atroz,0
+Protetor Lusco Atroz,0
+Fragmento de Metal Espacial,0
+Armadura Inferior Axo Atroz:,0
+Livro de Feitigos de Baixa Qualidade,0
+Protetor de Forca Bruta,0
+Escudo Farpado Atroz,0
+Cortaria do Infinito |,0
+Armadura Mistica Resplande.,0
+Langa Dilaceradora,0
+Mortificado,0
+Lapis de Absorgao Ly9-,0
+Armadura de Atirador,0
+Deputado divino-,0
+Lapis Agua do Medo Ly.2.,0
+Medo Sombrio:,0
+Elmo Luminoso Imperador,0
+Calga Luminosa Imperador,0
+Toque da Alma,0
+Protetor Intimidante,0
+Protetor de Tormento,0
+Besta llusoria,0
+Armadura Luminosa Imperador,0
+Amuleto de Ouro de Oraculo,0
+Lapis Congelador Ly?,0
+Pergaminho de Aparencia,0
+Anel de Ouro de Oraculo:,0
+Lapis do Engano Ly4,0
+Lapis Vigor Lv5-,0
+Lapis Vigor Lv6-,0
+Anel de Ouro de Lutador,0
+Lapis Vigor Lv?,0
+Manto Cheruvim,0
+Pilula Pequena Removedora EXP,0
+Elmo Luminoso Yinganga,0
+Bota Luminosa Yinganca,0
+Remedio da Resisténcia Ly3_,0
+Teraphim Intinito-,0
+Terror Intinito:,0
+Capa Sorrateira:,0
+Manopla de Imperador Respl.,0
+Capa Prudente,0
+Protetor Fatal de Fogo:,0
+Capa da Besta,0
+Bolsa classe Item Lv1,0
+Luvas Fatais:,0
+Machado do Observador,0
+Capacete Contaminagao,0
+VOo0 da Aquia Infinita:,0
+Armadura Medicus:,0
+Anel de Ouro de Cagador,0
+Armadura Sensivel,0
+Divisor de Dimensdes,0
+Decreto de Deus,0
+Elmo Sylma Neotito:,0
+Gram Infinite,0
+Calga Medicus,0
+Sorriso da Deusa,0
+Anel Resplandescente de De.,0
+Elmo Luminoso de Tirana:,0
+Vampira Infinite,0
+Armadura Luminosa do Sabio de Agua,0
+Tintura de Arma Crowly,0
+Tintura de Traie Crowly,0
+Aumento de EXP 1 Hora,0
+Troca de Fichas de Arma Elemental,0
+Armadura Inferior de Vinga.,0
+Bracadeira de Prata de Cag.,0
+Esconderijo Foriado nas Sombras-,0
+Protetor Vingador Brilha,0
+Capacete Adamas Deusa,0
+Elmo Luminoso Autoritas:,0
+Bracadeira de Ranger Respl.,0
+Anel Resplandescente de Ra.,0
+Escudo Péndulo-,0
+Armadura de Placa Legendario |,0
+Protetor 4xo Legendario:,0
+Capacete Miragem Legendario:,0
+Luvas Miragem Legendario |,0
+Botas de Miragem Legendario |,0
+Calgado Morcela Legendario,0
+Corvo da Renuncia,0
+Lapisia Poderosa:,0
+Remedio da Reagao Lv1,0
+Bastao Abencgoado,0
+Lapis de Assalto Lv6,0
+Luvas Brilhante:,0
+Sussurro do Deménio-,0
+Calga Mithril Deusa-,0
+Presente assustador de Loca’,0
+Protetor Dominador Resplan.,0
+Luva Nascor,0
+Invocador de Demonios:,0
+"ao Gigante
+Coragao Gigé",0
+Vale de Armadura Luminosa (Superior),0
+Naseemprion Legendario,0
+GM Encanto Ly.2,0
+Recreagao Doubler: LUC,0
+Botas de Autoridade Brilha.,0
+Vinganga Infinita,0
+GM Encanto Ly.13°,0
+Apsaras Legendaria:,0
+Mirinae,0
+Capa do Obstinado,0
+Armadura Inferior de Tormento-,0
+Alfa e Omega Infinitos:,0
+Luva Contaminagao dos Sonhos,0
+Protetor Nascor dos Sonhos,0
+Capa da Forca,0
+Sithneth |,0
+Armadura Inferior Dominado.,0
+Armadura de Imperador Resp.,0
+Botas de Imperador Resplan.,0
+Quadrado Cadtico Infinite”,0
+Ragao Vermelha,0
+Lapis Capacete DEX,0
+Bracadeira de Ouro de Defe.,0
+Lapis Sabio duplo Nv6_,0
+Runa de Batalha Media (1 hora),0
+Calgas da Autoridade Real.,0
+Manopla de Autoridade Resp.,0
+Caiado Mistico Atroz,0
+Escudo Farpado Legendario,0
+Esséncia Eterna,0
+Esséncia Pesadelo,0
+Esséncia de Bruxa,0
+Esséncia Espirito,0
+Destruidor Legendario,0
+Caixa de Yerao,0
+Valhalla Legendario,0
+Javelin Espectro Legendario |,0
+Luvas Tathar Atroz,0
+Remedio da Vitalidade Ly3-,0
+Echidna Infinito |,0
+Remedio Mana Ly3-,0
+Armadura Brilhante,0
+Luva de Forga Bruta,0
+Armadura Inferior de Forga.,0
+Token de Troca de Recreagao:,0
+Floco de Neve de Eolo,0
+Bracadeira de Ouro de Lutador,0
+Remedio da Sabedoria Ly3_,0
+Remedio da Reagao Lv3-,0
+Eltaphen Atroz:,0
+Plumas da Beleza,0
+GM Encanto Ly.12°,0
+Lapis Toxina Lv6_,0
+Remedio Reagao Lv 3 XT,0
+Capa Privilegiada,0
+Nostrum Golpe Limpo-,0
+Botas Dragao Deusa,0
+Pogao de Cura Grande de Ay.,0
+Calga Mithril Herdico:,0
+Protetor Ferox:,0
+Protetor Adamas Legendario:,0
+Calgas do Imperador,0
+Martelo da tragedia.,0
+Colecionador da Luz,0
+Lapis Sabio Duplo Ly1,0
+Protetor Ignit,0
+Lapis da Vida LvS_,0
+Lapis Artesanal Duplo Nv6_,0
+Armadura Luminosa Clerigo-,0
+Fragmento de Lapis Veloz,0
+Capa Imperial de Pagao,0
+Bota Luminosa Clerigo,0
+Protetor Adamas Deusa,0
+Armadura Inferior Adamas D.,0
+Armadura Luminosa Clerigo de Terra:,0
+Fragmento de Lapis Sonico:,0
+Capacete Dominador Resplan.,0
+Fragmento de Lapis Artesanal,0
+Fragmento de Lapis Astuto |,0
+Pogaa Intocavel Lv3-,0
+Fragmento de Lapis Vivido,0
+Elmo de Festa (F),0
+Calgas Imperial Brilha,0
+Calgas de Imperador Brilhante |,0
+Faisca Brilhante Infinita:,0
+"A,Estrela de Poseidon",0
+Praga do Po da Alquimia da Terra:,0
+Luvas Névoa Legendario |,0
+"A,Estrela de Hefesto",0
+Lapis Mistico N.9°,0
+Lapis Sabio de Capacete Ly2-,0
+Du-Sith Deusa-,0
+Guilhotina:,0
+Lagrimas da Deusa,0
+Estilhago dos Elementares,0
+Caixa da Pedra de Mystra.,0
+Capa Rocha,0
+Machado Polo Atroz,0
+Tarefa Sangrenta,0
+Lapis Fortuna Duplo Lv3-,0
+Luvas Treffers,0
+Susto de Yucon Legendario:,0
+Recompensa do Querubim,0
+Caiado Draconico:,0
+Vashrian,0
+Capacete Teneran,0
+Arco Relampago Vénia,0
+Botas Raffiniert,0
+Botas Dentron Yenia,0
+Avambrago Dominador Respla.,0
+Escudo Dracénico,0
+Protetor Dominador Brilhante,0
+Lapis Amaldigoamento Ly?,0
+Bracelete de Mana Lv2,0
+Anel Estamina Lv2-,0
+Anel de Mana Ly2,0
+Bracelete de Estamina Ly2_,0
+Bau de Tesouros de Dragao,0
+Botas Adamas Anciao,0
+Du-Sith Legendario:,0
+Lapis Inter,0
+Armadura Dragao Anciao |,0
+Lapis Fortuna Ly4,0
+Escudo Messias Escarlate D.,0
+Arca Eldurse-,0
+Lamina do Culto:,0
+Caixa da Retidao (20),0
+Luvas Couro Yenia-,0
+Lapis Luz da Agua Lv.1,0
+Calgas de Autoridade Respl.,0
+Lapis Amaldigoamento Lv6,0
+Lapis da Sonoléncia Lv6,0
+Dosuber,0
+Armadura Inferior Piton Deusa-,0
+Caixa da Retidao (15),0
+Dual Safe Lapis Lv?,0
+Ceu Novo Deusa,0
+Miolnir Deusa,0
+Pique Eterna,0
+Luvas Eremita Deusa,0
+Ascalao Deusa,0
+Arkainer:,0
+Garra Espremedora,0
+Lapis Astucia de Capacete Ly2,0
+Botas Dominadoras Brilhantes:,0
+Alma de Grandieta,0
+Bau de Tesouros Lacrado:,0
+Arca Tempestuoso-,0
+Relampago Atena Deusa,0
+Dente de Dragao Titan:,0
+Tarkin Legendario:,0
+Rei da Montanha Atroz,0
+Mao da Natureza,0
+Luva Luminosa Autoritas:,0
+Rei da Montanha Legendario,0
+Calgas Vallum,0
+Calgas Adamas Anciao-,0
+Malha Luminosa Corrupta,0
+Calgado de Forca Bruta,0
+Chapéu Ovelha (Furia),0
+Escudo Bowen,0
+Calga Adamas Deusa:,0
+Botas Adamas Deusa,0
+Doce de Natal L,0
+Arco de Burnen:,0
+Lamina Runa Legendario,0
+Bomba da Natureza Infinita,0
+Transporte a Casa de Guilda:,0
+Transporte @ Capital,0
+Transporte a Arena,0
+Luvas Imperiais Pacificas,0
+Protetor Névoa Legendario,0
+Protetor Piton Deusa,0
+Capa Infinita de Guardiao |,0
+Lapis da Fortuna de Capace.,0
+Luvas Piton Deusa:,0
+Botas Hanor Deusa,0
+Armadura Imperial,0
+Calgado Anga Venia-,0
+Protetor Bombardeio Yenia,0
+Facas da Morte,0
+Machado Semente Maligina,0
+Javelin Draconico:,0
+Luvas Bronze Veénia-,0
+Amuleto de Mana Nv2-,0
+Arcubalista Deusa,0
+Botas Tatoram Perito-,0
+Botas Dominadoras Respland.,0
+Besta de Grudge,0
+Botas Adamas Herdico:,0
+Lamina Escamosa de Prata,0
+Amuleto Tigre Branco:,0
+Fragmento Ira do Rei,0
+Botas de Autoridade,0
+O Absoluto Deusa,0
+Lapis Fortuna Duplo Lv2-,0
+Armadura de Placa Atroz,0
+Triturador de Almas Herdico |,0
+Botas Dragao Herdico,0
+Lapis Mistico Duplo Ly3-,0
+Protetor Axo Atroz:,0
+Castelo de Ago Deusa,0
+Uma prova de Luz,0
+Poderoso Colar das Trevas:,0
+Arco Composto Venia-,0
+Botas Ermitao Anciao,0
+Calgado Eremita Legendario:,0
+Protetor Piton Legendario |,0
+Devorador de Cadaveres Her.,0
+Calga Hanor Atroz:,0
+Recreagao GM: SP,0
+Recreagao Doubler: INT,0
+Armadura Inferior Lusco Atroz:,0
+Poder da Ira do Rei,0
+Capacete Teneran Lendario:,0
+Caixa da Retidao (50),0
+Capa Infinita de Lutador,0
+Calgas Sentinela,0
+Manopla de Imperador Brilh.,0
+Botas de Imperador Brilhantes:,0
+Manopla de Dignidade,0
+Armadura do Sentinela:,0
+Caixa do Papai Noel,0
+Bracal Luminosa Rancor,0
+Lapis Afortunado N. 9°,0
+Avambraco de Yinganca Resp.,0
+Anel Resplandescente de Pagao,0
+Anel Resplandescente de Mago,0
+Assassino Noturno,0
+Bracadeira de Ouro de Guer.,0
+Anel de Ouro de Guerreiro,0
+Botas de Vinganca Resplade.,0
+Vale de Restauragao de Personagem,0
+Armadura Inferior Sinistra:,0
