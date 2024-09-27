@@ -1,1 +1,3 @@
 Coordenada neutra (940, 1065)
+posição correta do leilão (658, 378)
+posição correta do x do leilão  (1320, 259) delta +662 -119
