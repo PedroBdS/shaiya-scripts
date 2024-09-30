@@ -17,17 +17,13 @@ while True:
     if not leilao_posicao_correta():
         corrigir_leilao()
 
-    if not atualizar_leilao():
-        continue
-    
+    atualizar_leilao()
+
     try:
-        nome, valor = atualizar_leilao()
+        nome, valor = ler_nome(), ler_valor()
+        # print(f'\nItem: {nome}\nValor lido: {valor}')
 
     except:
-        continue
-
-    if not nome:
-        corrigir_leilao()
         continue
 
     if not valor:

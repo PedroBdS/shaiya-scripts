@@ -2,7 +2,12 @@ import tkinter as tk
 from tkinter import messagebox
 from funcoes import *
 from PIL import Image, ImageTk
-import emoji
+
+def ler_nome2():
+    if not leilao_posicao_correta():
+        corrigir_leilao()
+    nome = ler_nome()
+    return nome
 
 def rgb_to_hex(r, g, b):
     return '#%02x%02x%02x' % (r, g, b)
@@ -10,26 +15,48 @@ def rgb_to_hex(r, g, b):
 rgb_color = (12, 22, 34)  # Vermelho claro
 hex_color = rgb_to_hex(*rgb_color)
 
-def reiniciar():
-    root.destroy()  # Fecha a janela
-    iniciar_processo()
+def atualizar_item():
+    # Lê o novo nome e o valor
+    global nome_lido
+    nome_lido = ler_nome2()
+    valor_na_lista = int(procurar_ou_adicionar(nome_lido))
+    gold, silver, copper = valor_para_gold(valor_na_lista)
+    
+    # Atualiza o ícone
+    img_icone = printar_coordenadas((756, 375), (788, 407))
+    icone = ImageTk.PhotoImage(img_icone)
+    icone_sla.config(image=icone)  # Atualiza o ícone
+    icone_sla.image = icone  # Necessário para o garbage collector não remover a imagem
+
+    # Atualiza o nome e o valor nas labels
+    label_nome.config(text=f'{nome_lido}')
+    label_valor.config(text=f'{gold}g  {silver}s  {copper}c')
 
 # Função para confirmar a alteração do valor
-def confirmar_alteracao():
+def confirmar_alteracao(event=None):
     try:
+        # Obtém os valores das moedas digitados pelo usuário
         valor_moedas = entry_valor.get()
         gold_novo, silver_novo, copper_novo = map(int, valor_moedas.split())
         valor_novo = gold_para_valor(gold_novo, silver_novo, copper_novo)
-        atualizar_item_csv(nome_lido, valor_novo)
-        root.destroy()  # Fecha a janela
-        iniciar_processo()
-    except Exception as e:
-        messagebox.showerror("Erro", f"Erro ao alterar valor: {e}")
 
+        # Atualiza o valor no CSV ou em algum banco de dados
+        atualizar_item_csv(nome_lido, valor_novo)
+
+        # Atualiza os itens na interface principal
+        atualizar_item()
+
+        # Fecha apenas a janela de alteração (janela_alteracao)
+        janela_alteracao.destroy()
+
+    except Exception as e:
+        # Exibe uma mensagem de erro caso ocorra um problema
+        messagebox.showerror("Erro", f"Erro ao alterar valor: {e}")
 
 # Função para abrir a janela de alteração
 def abrir_janela_alteracao():
     global entry_valor
+    global janela_alteracao
 
     janela_alteracao = tk.Toplevel(root)
     janela_alteracao.resizable(False, False)
@@ -50,14 +77,18 @@ def abrir_janela_alteracao():
     entry_valor = tk.Entry(janela_alteracao)
     entry_valor.pack(pady=5)
 
-    btn_confirmar = tk.Button(janela_alteracao, text="Confirmar", command=confirmar_alteracao)
+    # Aqui é onde a janela de alteração é passada como argumento para a função confirmar_alteracao
+    btn_confirmar = tk.Button(janela_alteracao, text="Confirmar", command=lambda: confirmar_alteracao(janela_alteracao))
+    janela_alteracao.bind('<Return>', confirmar_alteracao)
+
     btn_confirmar.pack(pady=10)
 
 # Função principal para iniciar o processo
-def iniciar_processo():
-    global nome_lido, root
 
-    nome_lido = ler_nome()
+def iniciar_processo():
+    global nome_lido, root, icone_sla, label_nome, label_valor
+
+    nome_lido = ler_nome2()
     valor_na_lista = int(procurar_ou_adicionar(nome_lido))
     gold, silver, copper = valor_para_gold(valor_na_lista)
 
@@ -67,7 +98,7 @@ def iniciar_processo():
     root.title("Alteração de Valor")
     root.resizable(False, False)
     root.geometry("400x220+-470+380")  # Janela de 400x220 posicionada 470px à esquerda e 380px para baixo
-    
+
     imagem = Image.open("./arquivos_tkinter/fundo.png")  # Use o caminho da sua imagem
     imagem_fundo = ImageTk.PhotoImage(imagem)
     
@@ -89,14 +120,12 @@ def iniciar_processo():
     btn_alterar = tk.Button(root, text="ALTERAR VALOR", font=("Arial", 9, "bold"), command=abrir_janela_alteracao, bg='darkgray')
     btn_alterar.place(x=27, y=170)
 
-    btn_reiniciar = tk.Button(root, text="Atualizar item", font=("Arial", 8), command=reiniciar, bg='darkgray')
+    btn_reiniciar = tk.Button(root, text="Atualizar item", font=("Arial", 8), command=atualizar_item, bg='darkgray')
     btn_reiniciar.place(x=27, y=83)
 
     root.mainloop()
 
-# Inicia o processo
 iniciar_processo()
-
 # cor de fundo 12, 22, 34
 
 # COORDENADAS DO ICONE NO LEILÃO: (756, 375), (788, 407)
